@@ -71,3 +71,98 @@
 		myTest();
 		myTest();
 	?>
+
+4. Sta je session ?
+
+-> Sesija (session) je nacin skladistenja informacija u promenljive tj. varijable.
+-> Te varijable su dostupne kod vise strana (across multiple pages)
+-> Sesije se ne cuvaju na racunaru korisnika
+-> Sesije traju sve dok korisnik ne zatvori pretrazivac (browser)
+-> HTTP adrese ne zatrzavaju stanje, sto je reseno pomocu sesija, kako bi neki podatak postojao kroz vise HTTP adresa tj. strana
+-> Sesije se pokrecu pomocu funkcije session_start(), ova funkcija mora biti pozvana na pocetku svakog php fajla gde zelimo da koristimo session varijable
+-> Funkcija session_start() se poziva pre bilo kog HTML koda, na samom vrhu fajla
+-> Sve session varijable se nalaze u globalnoj varijabli tj. nizu $_SESSION
+
+-> Primer: index.php
+
+	<?php
+	// Start the session
+	session_start();
+	?>
+	<!DOCTYPE html>
+	<html>
+	    <body>
+
+	        <?php
+	            // Set session variables
+	            $_SESSION["favcolor"] = "green";
+	            $_SESSION["favanimal"] = "cat";
+	            $_SESSION["test"] = "testing";
+	            echo "Session variables are set.";
+	        ?>
+
+	    </body>
+	</html>
+
+-> Primer 2: foo.php
+
+	<?php
+	session_start();
+	?>
+	<!DOCTYPE html>
+	<html>
+		<body>
+
+		<?php
+			// Echo session variables that were set on previous page
+			echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+			echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
+		?>
+
+		</body>
+	</html>
+
+-> Ako zelimo da promenimo vrednost sesije, samo dodelimo novu vrednost
+
+	<?php
+	session_start();
+	?>
+	<!DOCTYPE html>
+	<html>
+		<body>
+
+		<?php
+			// to change a session variable, just overwrite it
+			$_SESSION["favcolor"] = "yellow";
+			print_r($_SESSION);
+		?>
+
+		</body>
+	</html>
+
+-> Ako zelimo da uklonimo sve session varijable i unistimo sesiju, to mozemo pomocu funkcija: session_unset() i session_destroy()
+
+	<?php
+	session_start();
+	?>
+	<!DOCTYPE html>
+	<html>
+		<body>
+
+		<?php
+			// remove all session variables
+			session_unset();
+
+			// destroy the session
+			session_destroy();
+		?>
+
+		</body>
+	</html>
+
+-> Sesije se cuvaju na serveru
+-> u php.ini fajlu je definisana lokacija session.save_path
+-> U mom slucaju, na linux masini, session.save_path je /var/lib/php/sessions
+-> Pristup /var/lib/php/sessions direktorijumu je strogo zabranjen
+-> Sesija se cuva u vidu user-key
+	-> npr. 765487cf34ert8dede5a562e4f3a7e12
