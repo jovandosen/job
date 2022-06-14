@@ -1,0 +1,73 @@
+1. Koji tipovi baza postoje ?
+
+-> MySQL
+-> Solid
+-> PostgreSQL
+-> Oracle
+-> Sybase
+-> Paradox
+
+2. Koja je razlika izmedju varijable i konstante ?
+
+-> varijabla
+
+	-> vrednost varijable se moze menjati u toku izvrsavanja skripte
+	-> naziv varijable pocinje sa dolar ($) znakom
+	-> naziv varijable ne sme poceti sa brojem, karakter definisan posle dolar ($) znaka
+		-> $123 = 123 nije ok 
+		-> $_123 = 123 je ok
+
+-> konstanta
+
+	-> vrednost konstante se ne moze menjati u toku izvrsavanja skripte
+	-> naziv konstante ne sme da pocne sa dolar ($) znakom
+	-> naziv konstante moze da pocne sa donjom crtom (_)
+	-> konstanta se definise pomocu define() funkcije, npr. define('TEST', 100);
+	-> scope konstante je global, sto bi znacilo da je dostupna svuda
+
+3. Koji scope-ovi (dostupnost) varijable postoje ?
+
+-> global
+
+	<?php
+		$x = 10;
+
+		function test()
+		{
+			// $x nije dostupan u funkciji
+			// $x moze biti dostupan u funkciji ako dodamo kljucnu rec global ispred $x
+			// global $x
+		}
+
+		// $x je dostupan van funkcije
+	?>
+
+	-> PHP smesta globalne varijable u asocijativni niz $GLOBALS[index], npr. $GLOBALS['x']
+
+-> local
+
+	<?php
+		function foo()
+		{
+			$y = 5;
+			// $y ima local scope i dostupan je samo unutar funkcije
+		}
+	?>
+
+-> static
+
+	-> Kada se skripta izvrsi, sve varijable se unistavaju
+	-> Ako zelimo da sacuvamo vrednost neke varijable mozemo da dodamo kljucnu rec static
+
+	<?php
+		function myTest() 
+		{
+		  	static $x = 0;
+		  	echo $x;
+		  	$x++;
+		}
+
+		myTest();
+		myTest();
+		myTest();
+	?>
