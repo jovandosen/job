@@ -1,0 +1,40 @@
+////////////////////////////////////////
+
+// Poslovi infostud //
+
+url: https://poslovi.infostud.com
+email: dosenj994@gmail.com
+password: protector-994!
+
+////////////////////////////////////////
+
+// Hello world //
+
+url: https://www.helloworld.rs/
+email: dosenj994@gmail.com
+password: protector-994!
+
+////////////////////////////////////////
+
+// Startuj //
+
+url: https://startuj.com/
+email: dosenj994@gmail.com
+password: protector-994!
+
+////////////////////////////////////////
+
+// Email address //
+
+email: dosenj994@gmail.com
+password: protector994
+
+////////////////////////////////////////
+
+// Skype info //
+
+email: dosenj994@gmail.com
+password: protector994
+username: dosenj994
+
+////////////////////////////////////////
