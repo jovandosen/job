@@ -166,3 +166,68 @@
 -> Pristup /var/lib/php/sessions direktorijumu je strogo zabranjen
 -> Sesija se cuva u vidu user-key
 	-> npr. 765487cf34ert8dede5a562e4f3a7e12
+
+5. Sta je PEAR ?
+
+-> PEAR je akronim od PHP Extension and Application Repository
+-> PEAR je velika php biblioteka 
+-> Sastoji se iz velikog broja (reusable) komponenti
+-> Primeri:
+	-> Auth
+	-> Mail
+	-> Math
+	-> Console
+	-> Caching
+	-> Database
+
+6. Objasni razliku izmedju $message i $$message ?
+
+-> $message je regularna promenljiva
+-> $$message je referencijalna promenljiva
+
+-> Primeri:
+
+	-> Primer 1
+
+		<?php
+			$one = "two";
+			$two = "three";
+			$three = "four";
+			$four = "five";
+			$five = "eeeee";
+			echo $$$$$one; //prints 'eeeee'.
+		?>
+
+	-> Primer 2
+
+		-> bez primene logike
+
+			$comment = new stdClass(); // Create an object
+
+			$comment->name = sanitize_value($array['name']);
+			$comment->email = sanitize_values($array['email']);
+			$comment->url = sanitize_values($array['url']);
+			$comment->comment_text = sanitize_values($array['comment_text']);
+
+		-> sa primenom logike
+
+			$comment = new stdClass(); // Create a new object
+
+			foreach( $array as $key=>$val )
+			{
+			    $comment->$key = sanitize_values($val);
+			}
+
+7. Da li je php case-sensitive ?
+
+-> PHP je delimicno case-sensitive
+-> ugradjene (build-in) funkcije i custom funkcije nisu case-sensitive
+-> nazivi varijabli su case-sensitive
+
+-> case sensitive
+	-> variables, constants, array keys, class properties, class constants
+
+-> case insensitive
+	-> functions, class constructors, class methods, keywords and constructs (if, else, null, foreach, echo etc.)
+
+8. 
