@@ -230,4 +230,92 @@
 -> case insensitive
 	-> functions, class constructors, class methods, keywords and constructs (if, else, null, foreach, echo etc.)
 
-8. 
+8. Koji tipovi podataka (varijabli) postoje ?
+
+-> Integer
+-> String
+-> Boolean
+-> Object (npr. $mango = new Fruit())
+-> Array
+-> Resource (npr. konekcija na bazu)
+-> Null
+-> Double
+
+9. Koja su pravila prilikom deklarisanja varijable ?
+
+-> varijabla mora poceti sa dolar znakom
+-> ne sme poceti brojem
+-> moze da se sastoji iz slova i brojeva
+-> moze poceti sa donjom crtom
+-> ne sme da sadrzi specijane karaktere kao sto su: +, -, /, *, %, ^, &
+-> ne sme da sadrzi prazna mesta (space)
+-> $name i $NAME su razlicite promenljive, sto bi znacilo da su promenljive case-sensitive
+
+10. Koja je razlika izmedju echo i print ?
+
+-> echo je brzi od print
+-> print ima povratnu vrednost, vraca 1
+-> echo moze da ispise jedan ili vise string-ova
+-> print moze da ispise samo jedan string
+
+Primeri: 
+
+	->  echo  "and a ", 1, 2, 3;   // comma-separated without parentheses
+   		echo ("and a 123");        // just one parameter with parentheses
+
+   	->  print ("and a 123");
+   		print  "and a 123";  
+
+11. Koje su mane PHP-a ?
+
+-> nije bas siguran s obzirom da je open source, ASCII kod je dostupan 
+-> nije pogodan za aplikacije sa dosta sadrzaja
+-> modifikacija core-a nije moguca
+-> PHP frameworks koriste dosta alata (tools) sto utice na brzinu 
+-> Manjak alata za pronalazak gresaka u kodu (debugging tools)
+
+12. Koja je svrha @ simbola u PHP-u ?
+
+-> @ simbol se koristi da potisne tj. ignorise greske u kodu
+-> koristiti @ simbol je losa praksa zato sto greske nece nestati, vec ce biti samo skrivene
+
+13. Koja je uloga PHP parser-a ?
+
+-> Uloga je pretvaranje blokova koda u kod koji racunar moze da razume
+-> Pomocu funkcije token_get_all() mozemo parsirati php kod
+-> Abstract Syntax Tree (AST)
+-> Kompajler i interpreter, blokovi koda se analiziraju po strogim pravilima
+
+14. Koji tipovi nizova postoje ?
+
+-> indeksirani 
+	-> $data[0]
+
+-> asocijativni
+	-> $data['test']
+
+-> visedimenzioni
+	-> $data[[]]
+
+15. Koji tipovi gresaka postoje ?
+
+-> Notice
+
+	-> nece zaustaviti izvrsavanje skripte
+	-> nisu vidljivi korisniku
+	-> npr. promenljiva koja nije definisana (undefined variable)
+
+-> Warning
+
+	-> nece zaustaviti izvrsavanje skripte
+	-> vidljivi su korisniku
+	-> malo su ozbiljniji od Notice-a
+	-> npr. pokusavamo da include-ujemo skriptu (fajl) koja ne postoji
+
+-> Fatal
+
+	-> Odmah prekidaju izvrsavanje skripte
+	-> npr. pokusavamo da pristupimo nekom atributu (property) objekta koji ne postoji
+	-> npr. ako zelimo da require-ujemo fajl koji ne postoji
+
+16. 
