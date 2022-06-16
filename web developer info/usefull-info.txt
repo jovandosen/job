@@ -22,3 +22,4 @@
 22. http://mattboldt.github.io/typed.js/
 23. https://vuewp.com/vue-wordpress-plugin-starter/
 24. https://cdn.jsdelivr.net/npm/chart.js
+25. https://shellshock.io/
