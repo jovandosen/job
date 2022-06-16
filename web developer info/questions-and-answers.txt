@@ -410,4 +410,47 @@ Primeri:
 			}
 		?>
 
-20. 
+20. Koja je razlika izmedju ASP.NET i PHP ?
+
+-> PHP
+
+	-> open-source (besplatan)
+	-> server-side jezik
+	-> php je interpreter i delimicno kompajler
+	-> ne zavisi od platforme (Linux, Windows, MAC)
+
+-> ASP.NET
+
+	-> ima licensu (nije besplatan)
+	-> radi samo na Windows masinama
+	-> kompajler
+
+21. Sta znaci escaping to PHP ?
+
+-> PHP parser mora da ima nacin za raspoznavanje PHP koda od ostalih elemenata na stranici
+
+-> Primeri:
+
+	-> Primer 1:
+
+		echo "Hello "InterviewBit.""; // rezultuje fatal greskom
+
+		-> neophodno je da escape-ujemo string tako sto cemo dodati \ pre znaka navodnika
+			-> echo "Hello \"InterviewBit.\"";
+
+		-> drugi nacin je da koristimo kombinaciju jednostrukih i dvostrukih navodnika
+			-> echo 'Hello "InterviewBit."';
+
+22. Sta je Path Traversal ?
+
+-> Path Traversal je vrsta hakerskog napada (zove se jos i dot-dot-slash attack)
+-> Npr. ako haker zeli da pristupi osetljivim podacima preko URL-a, koriscenjem ../ 
+-> ../ se koristi za kretanje kroz direktorijume (jedan nivo gore)
+-> Na taj nacin haker moze da dodje do direktorijuma koji su van root-a ( /etc/passwd )
+
+23. Sta je final-na klasa i final-na metoda ?
+
+-> Final klasa se ne moze naslediti od strane druge klase
+-> Final metoda se ne moze pregaziti (override)
+
+24. 
