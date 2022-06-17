@@ -453,4 +453,39 @@ Primeri:
 -> Final klasa se ne moze naslediti od strane druge klase
 -> Final metoda se ne moze pregaziti (override)
 
-24. 
+24. Kako mozemo kreirati novu bazu ?
+
+-> Konekcija na bazu
+
+	-> $mysqli = new mysqli("localhost","my_user","my_password","my_db");
+
+-> Provera da li je konekcija uspesna
+
+	-> 	if ($mysqli -> connect_errno) {
+  			echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  			exit();
+		}
+
+-> Upit koji kreira novu bazu
+
+	->  $result = $mysqli -> query("CREATE DATABASE test")
+
+-> Zatvaranje konekcije 
+
+	-> $mysqli -> close();
+
+25. Sta je Memcache i Memcached ?
+
+-> Kesiranje upita ka bazi
+-> Brze ucitavanje stranica, kod web sajtova koji imaju mnogo poseta (Drupal, Wordpress)
+-> Smanjuje broj upita ka bazi
+-> memory caching system
+
+26. Na koji nacin mozemo da prikazemo rezultate dobijene iz baze ?
+
+-> mysqli_fetch_array() // asocijativni ili numericki niz
+-> mysqli_fetch_assoc() // asocijativni niz
+-> mysqli_fetch_object() // objektni pristup
+-> mysqli_fetch_row() // numericki niz
+
+27. 
