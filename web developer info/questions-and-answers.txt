@@ -531,4 +531,56 @@ Primeri:
 
 -> Slicna biblioteka je Guzzle
 
-28. 
+28. Sta je API ?
+
+-> API je akronim od Application Programming Interface
+-> API je kao skup pravila koja omogucavaju da jedan deo aplikacije komunicira (razmenjuje podatke) sa drugim delom aplikacije, ili razmena podataka izmedju dve aplikacije
+
+-> Primer 1:
+
+	-> Musterija dolazi u restoran i porucuje hranu (request)
+	-> Konobar preuzima porudzbinu (prenosi request)
+	-> Kuhinja sprema hranu (obrada request-a i formiranje response-a) i dostavlja hranu
+
+-> Primer 2:
+
+	-> Vremenska prognoza
+
+-> Primer 3:
+
+	-> Prikaz google mape na sajtu
+
+-> Vrste API-ja:
+	
+	-> REST
+
+		-> REST je akronim od Representational State Transfer
+		-> Omogucava sve CRUD operacije putem HTTP protokola, u JSON formatu
+		-> JSON je akronim od JavaScript Object Notation
+
+			-> Primer JSON-a:
+
+				-> '{"name":"John", "age":30, "car":null}'
+
+			-> CRUD (CREATE, READ, UPDATE, DELETE)
+			-> HTTP (GET, POST, PATCH, PUT, DELETE)
+
+	-> SOAP
+
+		-> SOAP je akronim od Simple Object Access Protocol
+		-> Koristi XML (data format) za slanje poruka
+		-> XML je slican HTML-u (tagovi)
+		-> XML je akronim od eXtensible Markup Language
+
+		-> Primer:
+
+			-> 	<?xml version="1.0" encoding="utf-8"?>
+				<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+				 	<soap:Body>
+				  		<IsValidISBN10 xmlns="http://webservices.daehosting.com/ISBN">
+				   			<sISBN>0-19-852663-6</sISBN>
+				  		</IsValidISBN10>
+				 	</soap:Body>
+				</soap:Envelope>
+
+29. 
