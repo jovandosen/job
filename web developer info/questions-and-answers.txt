@@ -583,4 +583,81 @@ Primeri:
 				 	</soap:Body>
 				</soap:Envelope>
 
-29. 
+29. Sta je PDO ?
+
+-> PDO je akronim od PHP Data Object
+-> PDO je drajver za rad sa bazom
+-> Primer:
+
+	-> 	<?php
+			$servername = "localhost";
+			$username = "username";
+			$password = "password";
+
+			try {
+			  	$conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+			  	// set the PDO error mode to exception
+			  	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			  	echo "Connected successfully";
+			} catch(PDOException $e) {
+			  	echo "Connection failed: " . $e->getMessage();
+			}
+		?>
+
+30. Koja je razlika izmedju GET i POST ?
+
+-> GET
+
+	-> parametri vidljivi u URL-u (razdvojeni sa &)
+		-> name1=value1&name2=value2
+	-> moze da se bookmark-uje
+	-> moze da se cache-ira
+	-> mogu da se koriste samo ASCII kodovi
+	-> ogranicen sa 2048 karaktera
+	-> encoding type ( application/x-www-form-urlencoded )
+	-> ne sme da se koristi za rad sa osetljivim podacima, zato sto su parametri vidljivi u URL-u
+
+-> POST
+
+	-> parametri nisu vidljivi u URL-u
+	-> ne moze da se bookmark-uje
+	-> ne moze da se cache-ira
+	-> pored ASCII kodova mogu se koristiti i binarni podaci (slike)
+	-> nema ogranicenje sto se tice kolicine podataka
+	-> encoding type ( application/x-www-form-urlencoded ili multipart/form-data )
+	-> moze da se koristi za rad sa osetljivim podacima (lozinke)
+
+31. Sta je type hinting u php-u ?
+
+-> Type hinting je definisanje ocekivanog tipa parametra koji se prosledjuje u funkciju
+-> Tipovi parametara:
+	-> niz
+	-> objekat
+	-> interfejs
+
+-> Kod je bolje organizovan i greske se lakse lokalizuju
+
+-> Primer:
+
+	-> //sendEmail() function argument $email is type hinted of Email Class. 
+	   //It means to call this function you must have to pass an email object otherwise an error is generated.
+
+		<?php
+		    function sendEmail (Email $email)
+		    {
+		      	$email->send();
+		    }
+		?>
+
+32. Kako mozemo da prekinemo izvrsavanje skripte ?
+
+-> pomocu funkcije exit() ili funkcije die()
+-> takodje mozemo da prosledimo poruku kao parametar
+	-> exit('message')
+
+-> Primer: 
+
+	-> 	<?php
+			$site = "https://www.interviewbit.com//";
+			fopen($site,"r") or exit("Unable to connect to $site");
+		?>
