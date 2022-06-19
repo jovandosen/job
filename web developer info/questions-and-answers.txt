@@ -788,5 +788,92 @@ Primeri:
 		$mango->set_color('Yellow'); // ERROR
 		$mango->set_weight('300'); // ERROR
 
-41. Sta su getters and setters ?
+41. Sta su getters i setters ?
 
+-> u php-u postoje magicne metode koje imaju odredjenu ulogu, __get() i __set() metode su deo tih magicnih metoda
+-> __get() se koristi za dobijanje vredosti nekog atributa ( vidljivost atributa mora biti PUBLIC )
+-> __set() metoda se koristi za dodelu vredosti atributima ( vidljivost atributa mora biti PUBLIC )
+
+-> Primeri:
+
+	-> Primer 1:
+
+		class User
+		{
+		    public $email;
+		    public $age;
+
+		    public function __get($property)
+		    {
+		        if(property_exists($this, $property)){
+		            return $this->property;
+		        }
+		    }
+
+		    public function __set($property, $value)
+		    {
+		        if(property_exists($this, $property)){
+		            $this->property = $value;
+		        }
+		    }
+		}
+
+		$user = new User();
+
+		$user->email = "test@gmail.com";
+		$user->age = 33;
+		$user->name = "John";
+
+		var_dump($user); // ispis ce biti: object(User)#1 (2) { ["email"]=> string(14) "test@gmail.com" ["age"]=> int(33) }
+						 // kao sto se vidi, atribut name nije dodeljen user objektu jer nije definisan unutar klase
+
+	-> Primer 2:
+	
+		class Person
+		{
+      		private $name;
+
+      		public function setName($name)
+      		{
+         		$this->name = $name;
+      		}
+
+      		public function getName()
+      		{
+         		return $this->name;
+      		}
+   		}
+
+   		$person = new Person();
+
+   		echo $person->name; // ispis: PHP Error Cannot access private property Person::$name
+   							// kao sto se vidi, dobili smo gresku, zato sto name ima vidljivost PRIVATE i dostupan je samo unutar klase gde je definisan
+
+   	-> Primer 3:
+
+   		-> uz malu doradu prethodnog primera imamo sledeci kod:
+
+   			-> 	class Person
+   				{
+		      		private $name;
+
+		      		public function setName($name)
+		      		{
+		         		$this->name = $name;
+		      		}
+
+		      		public function getName()
+		      		{
+		         		return 'Ime: '. $this->name;
+		      		}
+   				}
+
+			   	$person = new Person();
+			   	$person->setName('Damjan');
+			   	$name = $person->getName();
+
+			   	echo $name; // ispis: Ime: Damjan
+
+-> Primeri 2 i 3 jasno govore da pored __get i __set() metoda, mozemo koristiti i custom get-ere i set-ere ( getName() i setName() )
+
+42. 
