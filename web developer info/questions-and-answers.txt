@@ -360,7 +360,7 @@ Primeri:
 
 -> Obe funkcije imaju istu ulogu, da kopiraju sadrzaj nekog fajla u fajl u kom su pozvane
 -> Razlika je u tome sto ce require da prekine izvrsavanje skripte (FATAL ERROR) ako fajl ne postoji, dok include nece prekinuti izvrsavanje skripte
--> include ce samo da prikaze WARNING ako fajl ne postoji
+-> include ce samo da prikaze WARNING ako fajl ne postoji, i nastavice sa izvrsavanjem skripte
 
 19. Sta je cookie ?
 
@@ -661,3 +661,132 @@ Primeri:
 			$site = "https://www.interviewbit.com//";
 			fopen($site,"r") or exit("Unable to connect to $site");
 		?>
+
+33. Kako mozemo da dobijemo IP adresu korisnika ?
+
+-> U super-globalnom nizu $_SERVER se nalaze razni podaci, ukljucujuci i podaci o IP adresi
+
+-> Primer: 
+
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+
+34. Koja je razlika izmedju unset i unlink ?
+
+-> unset funkcija setuje varijablu kao undefined (unistava varijablu)
+-> unlink funkcija brise fajl (iz sistema)
+
+35. Kako mozemo da ukljucimo prikazivanje gresaka ?
+
+-> u php.ini fajlu mozemo definisati: display_errors = On
+-> druga opcija je pomocu funkcije ini_set()
+	-> ini_set('display_errors', 1)
+	-> zatim u skriptu dodajemo: error_reporting(E_ALL)
+
+36. Sta je __construct() i __destruct() ?
+
+-> obe funkcije su tzv. magicne metode
+-> kada kreiramo instancu (objekat) neke klase poziva se funkcija __construct()
+-> Primer:
+
+	class Foo
+	{
+	    public function __construct()
+	    {
+	        echo 'well and good';   
+	    }
+
+	    public function __destruct()
+	    {
+	        echo 'The End';
+	    }
+	}
+
+	$foo = new Foo(); // ispis -> well and good The End
+
+-> kada se skripta zavrsi poziva se __destruct() funkcija
+
+37. Kako mozemo da dobijemo ukupan broj elemenata niza ?
+
+-> pomocu funkcije count()
+
+38. Kako mozemo da definisemo funkciju koja ce da ispise hello ?
+
+-> Primer:
+
+	function hello($message = false)
+	{
+		echo ($message) ? $message : 'not ok';
+	}
+
+39. Kako mozemo da proverimo da li je polje forme popunjeno ?
+
+-> 	if(empty($_POST['email'])){
+  		echo "The email cannot be empty";
+	}
+
+40. Koji sve nivoi pristupa postoje ?
+
+-> public
+
+	-> metodama i atributima se moze pristupiti svuda
+
+-> protected
+
+	-> metodama i atributima se moze pristupiti samo UNUTAR klase u kojoj su definisani ili UNUTAR klase koja nasledjuje klasu u kojoj su definisani
+
+-> private
+
+	-> metodama i atributima se moze pristupiti samo UNUTAR klase u kojoj su definisani
+
+-> Primeri:
+
+	-> Primer 1:
+
+		<?php
+			class Fruit 
+			{
+			  	public $name;
+			  	protected $color;
+			  	private $weight;
+			}
+
+			$mango = new Fruit();
+			$mango->name = 'Mango'; // OK
+			$mango->color = 'Yellow'; // ERROR
+			$mango->weight = '300'; // ERROR
+		?>
+
+	-> Primer 2:
+
+		class Fruit 
+		{
+		  	public $name;
+		  	public $color;
+		  	public $weight;
+
+		  	function set_name($n) {  // a public function (default)
+		    	$this->name = $n;
+		  	}
+
+		  	protected function set_color($n) { // a protected function
+		    	$this->color = $n;
+		  	}
+
+		  	private function set_weight($n) { // a private function
+		    	$this->weight = $n;
+		  	}
+		}
+
+		$mango = new Fruit();
+		$mango->set_name('Mango'); // OK
+		$mango->set_color('Yellow'); // ERROR
+		$mango->set_weight('300'); // ERROR
+
+41. Sta su getters and setters ?
+
