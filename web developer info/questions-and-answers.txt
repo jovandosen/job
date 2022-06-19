@@ -876,4 +876,37 @@ Primeri:
 
 -> Primeri 2 i 3 jasno govore da pored __get i __set() metoda, mozemo koristiti i custom get-ere i set-ere ( getName() i setName() )
 
-42. 
+42. Sta je MVC ?
+
+-> MVC je akronim od Model-View-Controller
+
+-> Model je zaduzen za rad sa podacima (sve CRUD operacije)
+-> Controller je posrednik (obrada korisnikovih akcija npr. klik dugmeta) izmedju Model-a i View-a
+-> View sluzi za prikaz podataka (prezentacijski sloj)
+
+-> Primer: 
+
+	-> Kada korisnik klikne na neko dugme na sajtu, taj klik (akcija) se prosledjuje u Controller
+	-> Controller prosledjuje tu akciju u Model
+	-> Model generise podatke ( npr. iz baze se dobiju neki podaci, primer sql upita: SELECT * FROM users )
+	-> Model vraca podatke Controller-u
+	-> Controller prosledjuje podatke u View
+
+-> PHP Framework-ci koji koriste MVC su:
+
+	-> Laravel
+	-> Symfony
+	-> Slim 
+	-> Yii
+	-> Zend
+
+43. Sta izaziva sledecu gresku: Cannot modify header information – headers already sent ?
+
+-> Ako koristimo neke funkcije ( header, session_start, setcookie ) koje modifikuju HTTP header, te funkcije moraju biti pozvane (invoked) pre bilo kakvog ispisa
+	-> echo ili print 
+
+-> Ako koristimo cist (raw) html pre php koda
+-> Ako postoji prazno mesto pre ili posle php tagova ( <?php ?> )
+-> Prethodne error poruke ili notice-si
+
+44. Sta je SQL Injection ?
