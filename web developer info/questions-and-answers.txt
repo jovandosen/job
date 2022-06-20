@@ -910,3 +910,113 @@ Primeri:
 -> Prethodne error poruke ili notice-si
 
 44. Sta je SQL Injection ?
+
+-> SQL Injection je vrsta napada, gde haker moze da modifikuje sql upit koji se salje u bazu
+-> Npr. ako imamo formu gde se upisuju podaci, u neko polje forme se moze upisati "zao" string, koji moze da unisti bazu ili da ukrade neke osetljive podatke iz baze
+
+-> Primeri:
+
+	-> Primer 1:
+
+		-> Ako imamo polje za search (type text), u to polje se moze upisati: 105 OR 1=1
+		-> OR 1=1 uslov ce biti ispunjen i sql upit ce se izvrsiti
+
+	-> Primer 2:
+
+		-> ako imamo login formu
+		-> u polja username i password mozemo upisati: " or ""="
+			-> tada dobijamo sledeci sql upit: SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""=""
+			-> uslov ce biti ispunjen i baza postaje izlozena napadima (unistavanje, kradja...)
+
+-> Kako bi sprecili SQL Injection mozemo koristiti pripremljene podatke (prepared statements)
+
+-> Primeri: 
+
+	-> Primer 1 sa mysqli:
+
+		<?php
+			$servername = "localhost";
+			$username = "username";
+			$password = "password";
+			$dbname = "myDB";
+
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, $dbname);
+
+			// Check connection
+			if ($conn->connect_error) {
+			  	die("Connection failed: " . $conn->connect_error);
+			}
+
+			// prepare and bind
+			$stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
+			$stmt->bind_param("sss", $firstname, $lastname, $email);
+
+			// set parameters and execute
+			$firstname = "John";
+			$lastname = "Doe";
+			$email = "john@example.com";
+			$stmt->execute();
+
+			$firstname = "Mary";
+			$lastname = "Moe";
+			$email = "mary@example.com";
+			$stmt->execute();
+
+			$firstname = "Julie";
+			$lastname = "Dooley";
+			$email = "julie@example.com";
+			$stmt->execute();
+
+			echo "New records created successfully";
+
+			$stmt->close();
+			$conn->close();
+		?>
+
+	-> Primer 2 sa PDO:
+
+		<?php
+			$servername = "localhost";
+			$username = "username";
+			$password = "password";
+			$dbname = "myDBPDO";
+
+			try {
+			  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+			  // set the PDO error mode to exception
+			  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			  // prepare sql and bind parameters
+			  $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email)
+			  VALUES (:firstname, :lastname, :email)");
+			  $stmt->bindParam(':firstname', $firstname);
+			  $stmt->bindParam(':lastname', $lastname);
+			  $stmt->bindParam(':email', $email);
+
+			  // insert a row
+			  $firstname = "John";
+			  $lastname = "Doe";
+			  $email = "john@example.com";
+			  $stmt->execute();
+
+			  // insert another row
+			  $firstname = "Mary";
+			  $lastname = "Moe";
+			  $email = "mary@example.com";
+			  $stmt->execute();
+
+			  // insert another row
+			  $firstname = "Julie";
+			  $lastname = "Dooley";
+			  $email = "julie@example.com";
+			  $stmt->execute();
+
+			  echo "New records created successfully";
+			} catch(PDOException $e) {
+			  echo "Error: " . $e->getMessage();
+			}
+			$conn = null;
+		?>
+
+45. 
