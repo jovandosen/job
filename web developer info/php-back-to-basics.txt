@@ -1,0 +1,155 @@
+<?php
+
+    session_start();
+
+    if(isset($_SESSION['register_message'])){
+        echo $_SESSION['register_message'];
+        session_unset();
+        session_destroy();
+    }
+
+    if(isset($_POST['register'])){
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $error = false;
+
+        if(empty($name)){
+            $error = true;
+            $_SESSION['name_error'] = 'Name can not be empty.';
+        }
+
+        if(empty($email)){
+            $error = true;
+            $_SESSION['email_error'] = 'Email can not be empty.';
+        }
+
+        if(empty($password)){
+            $error = true;
+            $_SESSION['password_error'] = 'Password can not be empty.';
+        }
+
+        if($error === true){
+            header('Location: baz.php');
+            exit();
+        }
+
+        $conn = new mysqli("localhost", "jovan", "protector-994", "development");
+
+        if($conn->connect_errno){
+            echo "Failed to connect to MySQL: " . $conn->connect_error;
+            exit();
+        }
+
+        $sql = "INSERT INTO users(name, email, password) VALUES('" . $name . "', '" . $email . "', '" . $password . "')";
+
+        if($conn->query($sql) === TRUE){
+            $conn->close();
+            $_SESSION['register_message'] = 'New record successfully added to database.';
+            header('Location: baz.php');
+            exit();
+        }
+
+    }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            #form-container {
+                width: 500px;
+                height: auto;
+                margin: 100px auto;
+            }
+            .field-style {
+                padding: 10px;
+                width: 300px;
+            }
+            #reg-btn {
+                padding: 10px;
+                color: white;
+                background-color: lightseagreen;
+                border: none;
+            }
+            #reg-btn:hover {
+                cursor: pointer;
+            }
+            .box-style {
+                margin-bottom: 10px;
+            }
+            .error-msg-box {
+                margin-top: 5px;
+                color: red;
+            }
+        </style>
+        <div id="form-container">
+            <form action="baz.php" method="POST">
+                <h3 class="box-style">Register form</h3>
+                <div class="box-style">
+                    <div>
+                        <input type="text" name="name" placeholder="Name..." class="field-style" autocomplete="off" 
+                            value="<?php echo (isset($_POST['name'])) ? $_POST['name'] : ''; ?>">
+                    </div>
+                    <div class="error-msg-box">
+                        <p>
+                            <?php
+                                if(isset($_SESSION['name_error'])){
+                                    echo $_SESSION['name_error'];
+                                    unset($_SESSION['name_error']);
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="box-style">
+                    <div>
+                        <input type="text" name="email" placeholder="Email..." class="field-style" autocomplete="off" 
+                            value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : ''; ?>">
+                    </div>
+                    <div class="error-msg-box">
+                        <p>
+                            <?php
+                                if(isset($_SESSION['email_error'])){
+                                    echo $_SESSION['email_error'];
+                                    unset($_SESSION['email_error']);
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="box-style">
+                    <div>
+                        <input type="password" name="password" placeholder="Password..." class="field-style">
+                    </div>
+                    <div class="error-msg-box">
+                        <p>
+                            <?php
+                                if(isset($_SESSION['password_error'])){
+                                    echo $_SESSION['password_error'];
+                                    unset($_SESSION['password_error']);
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="box-style">
+                    <input type="submit" value="Register" name="register" id="reg-btn" title="Register">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
