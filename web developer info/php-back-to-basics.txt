@@ -1,21 +1,39 @@
 <?php
 
+    // start the session
     session_start();
 
+    if(isset($_SESSION['query_info'])){
+        echo 'im here';
+        var_dump($_SESSION['query_info']);
+    }
+
+    // check if successfull registration message exists
     if(isset($_SESSION['register_message'])){
+
         echo $_SESSION['register_message'];
+
+        // remove all session variables and destroy session
         session_unset();
         session_destroy();
     }
 
+    // check if register button is clicked
     if(isset($_POST['register'])){
 
+        // collect form data using POST request method
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        // save temporary form data so user doesn't have to type over and over
+        $_SESSION['temp_name'] = $name;
+        $_SESSION['temp_email'] = $email;
+
+        // set default error value
         $error = false;
 
+        // form validation
         if(empty($name)){
             $error = true;
             $_SESSION['name_error'] = 'Name can not be empty.';
@@ -31,25 +49,39 @@
             $_SESSION['password_error'] = 'Password can not be empty.';
         }
 
-        if($error === true){
-            header('Location: baz.php');
-            exit();
-        }
+        // if there are no validation errors
+        if($error === false){
 
-        $conn = new mysqli("localhost", "jovan", "protector-994", "development");
+            // create db connection
+            $conn = new mysqli("localhost", "jovan", "protector-994", "development");
 
-        if($conn->connect_errno){
-            echo "Failed to connect to MySQL: " . $conn->connect_error;
-            exit();
-        }
+            // check if there are any db connection errors
+            if($conn->connect_errno){
+                echo "Failed to connect to MySQL: " . $conn->connect_error;
+                exit();
+            }
 
-        $sql = "INSERT INTO users(name, email, password) VALUES('" . $name . "', '" . $email . "', '" . $password . "')";
+            // create query that will insert new record to db
+            $sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$password')";
 
-        if($conn->query($sql) === TRUE){
-            $conn->close();
-            $_SESSION['register_message'] = 'New record successfully added to database.';
-            header('Location: baz.php');
-            exit();
+            // run query
+            if($conn->query($sql) === TRUE){
+
+                // put query info to session
+                $_SESSION['query_info'] = '';
+
+                // close connection
+                $conn->close();
+
+                // set successfull registration message
+                $_SESSION['register_message'] = 'New record successfully added to database.';
+
+                // redirect back to same page, to reset HTTP state
+                header('Location: register.php');
+
+                // kill the script
+                exit();
+            }
         }
 
     }
@@ -97,12 +129,12 @@
             }
         </style>
         <div id="form-container">
-            <form action="baz.php" method="POST">
+            <form action="register.php" method="POST">
                 <h3 class="box-style">Register form</h3>
                 <div class="box-style">
                     <div>
                         <input type="text" name="name" placeholder="Name..." class="field-style" autocomplete="off" 
-                            value="<?php echo (isset($_POST['name'])) ? $_POST['name'] : ''; ?>">
+                            value="<?php echo (isset($_SESSION['temp_name'])) ? $_SESSION['temp_name'] : ''; ?>">
                     </div>
                     <div class="error-msg-box">
                         <p>
@@ -118,7 +150,7 @@
                 <div class="box-style">
                     <div>
                         <input type="text" name="email" placeholder="Email..." class="field-style" autocomplete="off" 
-                            value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : ''; ?>">
+                            value="<?php echo (isset($_SESSION['temp_email'])) ? $_SESSION['temp_email'] : ''; ?>">
                     </div>
                     <div class="error-msg-box">
                         <p>
