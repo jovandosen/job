@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            #form-container {
+                width: 500px;
+                height: auto;
+                margin: 100px auto;
+            }
+            .field-style {
+                padding: 10px;
+                width: 300px;
+            }
+            #reg-btn {
+                padding: 10px;
+                color: white;
+                background-color: lightseagreen;
+                border: none;
+            }
+            #reg-btn:hover {
+                cursor: pointer;
+            }
+            .box-style {
+                margin-bottom: 10px;
+            }
+            .error-msg-box {
+                margin-top: 5px;
+                color: red;
+            }
+        </style>
+        <div id="form-container">
+            <form action="baz.php" method="POST">
+                <h3 class="box-style">Register form</h3>
+                <div class="box-style">
+                    <div>
+                        <input type="text" name="name" placeholder="Name..." class="field-style" autocomplete="off" 
+                            value=""'); delete from users where 1=1 or username='"">
+                    </div>
+                    <div class="error-msg-box">
+                        <p>
+                                                    </p>
+                    </div>
+                </div>
+                <div class="box-style">
+                    <div>
+                        <input type="text" name="email" placeholder="Email..." class="field-style" autocomplete="off" 
+                            value="asdasd">
+                    </div>
+                    <div class="error-msg-box">
+                        <p>
+                                                    </p>
+                    </div>
+                </div>
+                <div class="box-style">
+                    <div>
+                        <input type="password" name="password" placeholder="Password..." class="field-style">
+                    </div>
+                    <div class="error-msg-box">
+                        <p>
+                                                    </p>
+                    </div>
+                </div>
+                <div class="box-style">
+                    <input type="submit" value="Register" name="register" id="reg-btn" title="Register">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
