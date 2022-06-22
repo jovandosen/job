@@ -1,0 +1,91 @@
+<?php
+
+    // create db connection
+    $conn = new mysqli("localhost", "jovan", "protector-994", "development");
+
+    // check if there are any db connection errors
+    if($conn->connect_errno){
+        echo "Failed to connect to MySQL: " . $conn->connect_error;
+        exit();
+    }
+
+    $sql = "SELECT * FROM users";
+
+    $result = $conn->query($sql);
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User list</title>
+    </head>
+    <body>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            #user-table-container {
+                width: 500px;
+                height: auto;
+                margin: 100px auto;
+            }
+            .link-style {
+                text-decoration: none;
+            }
+            .link-style:hover {
+                text-decoration: underline;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+            }
+            #user-table {
+                margin: 10px auto;
+            }
+        </style>
+        <div id="user-table-container">
+            <?php if($result->num_rows > 0): ?>
+                <h3>User list</h3>
+                <table style="width:100%" id="user-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>PASSWORD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($row = $result->fetch_object()): ?>
+                            <tr>
+                                <td>
+                                    <?php echo $row->id; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row->name; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row->email; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row->password; ?>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>    
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <h3>No records found.</h3>    
+            <?php endif; ?>
+            <a href="register.php" class="link-style">Register page</a>
+        </div>
+    </body>
+</html>
