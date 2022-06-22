@@ -3,11 +3,6 @@
     // start the session
     session_start();
 
-    if(isset($_SESSION['query_info'])){
-        echo 'im here';
-        var_dump($_SESSION['query_info']);
-    }
-
     // check if successfull registration message exists
     if(isset($_SESSION['register_message'])){
 
@@ -21,10 +16,14 @@
     // check if register button is clicked
     if(isset($_POST['register'])){
 
-        // collect form data using POST request method
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        // collect form data using POST request method, also trim data
+        $name = trim($_POST['name']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        // format user input
+        $name = ucfirst(strtolower($name));
+        $email = strtolower($email);
 
         // save temporary form data so user doesn't have to type over and over
         $_SESSION['temp_name'] = $name;
@@ -37,11 +36,21 @@
         if(empty($name)){
             $error = true;
             $_SESSION['name_error'] = 'Name can not be empty.';
+        } else {
+            if(!preg_match("/^[a-zA-Z-' ]*$/", $name)){
+                $error = true;
+                $_SESSION['name_error'] = 'Name can contain only letters and white spaces.';
+            }
         }
 
         if(empty($email)){
             $error = true;
             $_SESSION['email_error'] = 'Email can not be empty.';
+        } else {
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $error = true;
+                $_SESSION['email_error'] = 'Email is not valid.';
+            }
         }
 
         if(empty($password)){
@@ -61,29 +70,31 @@
                 exit();
             }
 
-            // create query that will insert new record to db
-            $sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$password')";
+            // prepare sql query
+            $sqlPrepare = $conn->prepare("INSERT INTO users(name, email, password) VALUES(?, ?, ?)");
+
+            // bind user input fields
+            $sqlPrepare->bind_param("sss", $name, $email, $password);
 
             // run query
-            if($conn->query($sql) === TRUE){
+            $sqlPrepare->execute();
 
-                // put query info to session
-                $_SESSION['query_info'] = '';
+            // close prepared statement
+            $sqlPrepare->close();
 
-                // close connection
-                $conn->close();
+            // close connection
+            $conn->close();
 
-                // set successfull registration message
-                $_SESSION['register_message'] = 'New record successfully added to database.';
+            // set successfull registration message
+            $_SESSION['register_message'] = 'New record successfully added to database.';
 
-                // redirect back to same page, to reset HTTP state
-                header('Location: register.php');
+            // redirect back to same page, to reset HTTP state
+            header('Location: register.php');
 
-                // kill the script
-                exit();
-            }
+            // kill the script
+            exit();
+
         }
-
     }
 
 ?>
@@ -93,7 +104,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Register</title>
     </head>
     <body>
         <style>
@@ -126,6 +137,13 @@
             .error-msg-box {
                 margin-top: 5px;
                 color: red;
+                font-size: 15px;
+            }
+            .link-style {
+                text-decoration: none;
+            }
+            .link-style:hover {
+                text-decoration: underline;
             }
         </style>
         <div id="form-container">
@@ -133,7 +151,7 @@
                 <h3 class="box-style">Register form</h3>
                 <div class="box-style">
                     <div>
-                        <input type="text" name="name" placeholder="Name..." class="field-style" autocomplete="off" 
+                        <input type="text" name="name" placeholder="Name..." class="field-style" autocomplete="off" maxlength="255" 
                             value="<?php echo (isset($_SESSION['temp_name'])) ? $_SESSION['temp_name'] : ''; ?>">
                     </div>
                     <div class="error-msg-box">
@@ -149,7 +167,7 @@
                 </div>
                 <div class="box-style">
                     <div>
-                        <input type="text" name="email" placeholder="Email..." class="field-style" autocomplete="off" 
+                        <input type="text" name="email" placeholder="Email..." class="field-style" autocomplete="off" maxlength="255" 
                             value="<?php echo (isset($_SESSION['temp_email'])) ? $_SESSION['temp_email'] : ''; ?>">
                     </div>
                     <div class="error-msg-box">
@@ -182,6 +200,7 @@
                     <input type="submit" value="Register" name="register" id="reg-btn" title="Register">
                 </div>
             </form>
+            <a href="user-list.php" class="link-style">User list</a>
         </div>
     </body>
 </html>

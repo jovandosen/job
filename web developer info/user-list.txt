@@ -1,5 +1,8 @@
 <?php
 
+    // start the session
+    session_start();
+
     // create db connection
     $conn = new mysqli("localhost", "jovan", "protector-994", "development");
 
@@ -12,6 +15,15 @@
     $sql = "SELECT * FROM users";
 
     $result = $conn->query($sql);
+
+    if(isset($_SESSION['user_deleted'])){
+
+        echo $_SESSION['user_deleted'];
+
+        // remove all session variables and destroy session
+        session_unset();
+        session_destroy();
+    }
 
 ?>
 <!DOCTYPE html>
@@ -50,6 +62,20 @@
             #user-table {
                 margin: 10px auto;
             }
+            #delete-user-btn {
+                padding: 5px;
+                border: none;
+                background-color: red;
+                color: white;
+            }
+            #edit-user-btn {
+                padding: 5px;
+                border: none;
+                background-color: lightblue;
+            }
+            #delete-user-btn:hover, #edit-user-btn:hover {
+                cursor: pointer;
+            }
         </style>
         <div id="user-table-container">
             <?php if($result->num_rows > 0): ?>
@@ -61,6 +87,7 @@
                             <th>NAME</th>
                             <th>EMAIL</th>
                             <th>PASSWORD</th>
+                            <th>OPTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +104,13 @@
                                 </td>
                                 <td>
                                     <?php echo $row->password; ?>
+                                </td>
+                                <td>
+                                    <form action="delete-user.php" method="POST">
+                                        <input type="hidden" name="userID" value="<?php echo $row->id; ?>">
+                                        <input type="submit" value="delete" name="delete" id="delete-user-btn" title="Delete this record">
+                                        <input type="submit" value="edit" name="edit" id="edit-user-btn" title="Edit user">
+                                    </form>
                                 </td>
                             </tr>
                         <?php endwhile; ?>    
