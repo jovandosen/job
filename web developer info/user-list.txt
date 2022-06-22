@@ -18,7 +18,7 @@
 
     if(isset($_SESSION['user_deleted'])){
 
-        echo $_SESSION['user_deleted'];
+        echo "<div id='flash-msg-el' class='flash-msg-box flash-error'>" . $_SESSION['user_deleted'] . "</div>";
 
         // remove all session variables and destroy session
         session_unset();
@@ -76,6 +76,14 @@
             #delete-user-btn:hover, #edit-user-btn:hover {
                 cursor: pointer;
             }
+            .flash-msg-box {
+                padding: 20px;
+                font-size: 18px;
+                color: white;
+            }
+            .flash-error {
+                background-color: red;
+            }
         </style>
         <div id="user-table-container">
             <?php if($result->num_rows > 0): ?>
@@ -121,5 +129,15 @@
             <?php endif; ?>
             <a href="register.php" class="link-style">Register page</a>
         </div>
+        <script>
+            let flashMsgNum = document.getElementsByClassName("flash-msg-box").length;
+
+            if(flashMsgNum > 0){
+                setTimeout(function(){
+                    let flashMsgEl = document.getElementById("flash-msg-el");
+                    flashMsgEl.remove();
+                }, 3000);
+            }
+        </script>
     </body>
 </html>

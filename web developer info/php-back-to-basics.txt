@@ -6,7 +6,7 @@
     // check if successfull registration message exists
     if(isset($_SESSION['register_message'])){
 
-        echo $_SESSION['register_message'];
+        echo "<div id='flash-msg-el' class='flash-msg-box flash-success'>" . $_SESSION['register_message'] . "</div>";
 
         // remove all session variables and destroy session
         session_unset();
@@ -145,6 +145,13 @@
             .link-style:hover {
                 text-decoration: underline;
             }
+            .flash-msg-box {
+                padding: 20px;
+                font-size: 18px;
+            }
+            .flash-success {
+                background-color: lightgreen;
+            }
         </style>
         <div id="form-container">
             <form action="register.php" method="POST">
@@ -202,5 +209,15 @@
             </form>
             <a href="user-list.php" class="link-style">User list</a>
         </div>
+        <script>
+            let flashMsgNum = document.getElementsByClassName("flash-msg-box").length;
+
+            if(flashMsgNum > 0){
+                setTimeout(function(){
+                    let flashMsgEl = document.getElementById("flash-msg-el");
+                    flashMsgEl.remove();
+                }, 3000);
+            }
+        </script>
     </body>
 </html>
