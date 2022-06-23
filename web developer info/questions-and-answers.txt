@@ -1041,4 +1041,11 @@ Primeri:
 
 			string(108) "INSERT INTO users(name, email, password) VALUES('ee', 'aa', '');drop table posts where 1=1 or title='';"/*')"
 
-45. 
+45. Number System u PHP-u ?
+
+-> Binary (0,1)
+-> Octal (0,1,2,3,4,5,6,7)
+-> Decimal (0,1,2,3,4,5,6,7,8,9)
+-> Hexadecimal (0,1,2,3,4,5,6,7,8,9, A, B, C, D, E, F (A = 10, B = 11, C = 12, D = 13 , E = 14, F = 15))
+
+46. 

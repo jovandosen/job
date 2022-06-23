@@ -28,3 +28,5 @@
 28. https://www.culttt.com/2013/02/04/how-to-save-php-sessions-to-a-database
 29. http://www.zedwood.com/article/preventing-sql-injection-in-php-insert-and-update
 30. https://developer.okta.com/blog/2020/06/15/sql-injection-in-php
+31. https://favicon.io/
+32. https://www.w3programmers.com/
