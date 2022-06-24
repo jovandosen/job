@@ -1048,4 +1048,30 @@ Primeri:
 -> Decimal (0,1,2,3,4,5,6,7,8,9)
 -> Hexadecimal (0,1,2,3,4,5,6,7,8,9, A, B, C, D, E, F (A = 10, B = 11, C = 12, D = 13 , E = 14, F = 15))
 
-46. 
+46. Koja je razlika izmedju == i === ?
+
+-> == provera vrednosti dve varijable
+-> === provera vrednosti i tipa varijable
+
+47. Sta su PSR ?
+
+-> PSR su standardi (guide) za kodiranje
+-> niz pravila koje programeri prate i postuju, posebno vazno kako bi se olaksao ceo proces kodiranja i razmene koda
+-> PSR1, PSR2, PSR3, PSR4
+
+48. Sta je composer ?
+
+-> alat za instalaciju/azuriranje iskljucivo php biblioteka koda
+-> composer.json je konfiguracioni fajl u kom su definisane sve biblioteke (nazivi biblioteka i njihove verzije) koje se koriste
+-> composer.lock je fajl sa meta podacima o svim bibliotekama
+-> composer komande:
+	-> composer require naziv-biblioteke
+	-> composer install
+	-> composer update
+
+49. Sta je PHP-FIG ?
+
+-> PHP Framework Interop Group
+-> grupa ljudi koja se bavi standardima kodiranja kako bi se olaksao i unapredio proces kodiranja
+
+50. 

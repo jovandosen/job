@@ -8,3 +8,6 @@
 8. https://www.geeksforgeeks.org/php-mysql-database-introduction/
 9. https://www.culttt.com/2013/02/04/how-to-save-php-sessions-to-a-database
 10. http://www.zedwood.com/article/preventing-sql-injection-in-php-insert-and-update
+11. https://www.php-fig.org/psr/psr-2/
+12. https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
+13. https://stackoverflow.com/questions/6287903/how-to-properly-add-cross-site-request-forgery-csrf-token-using-php
