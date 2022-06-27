@@ -38,3 +38,13 @@ password: protector994
 username: dosenj994
 
 ////////////////////////////////////////
+
+// Microsoft Teams info //
+
+-> url: https://teams.live.com/
+-> url: https://teams.live.com/_#/conversations/?ctx=chat
+
+-> email: dosenj994@gmail.com
+-> password: protector994
+
+////////////////////////////////////////
