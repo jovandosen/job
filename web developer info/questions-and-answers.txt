@@ -1074,4 +1074,67 @@ Primeri:
 -> PHP Framework Interop Group
 -> grupa ljudi koja se bavi standardima kodiranja kako bi se olaksao i unapredio proces kodiranja
 
-50. 
+50. Najcesca upotreba PHP je ?
+
+-> Rad sa form-ama (registracija, login, kontakt)
+-> Rad sa sistemskim funkcijama (kreiranje fajlova, brisanje fajlova, modifikacija fajlova)
+-> Slanje email-ova sa podacima (attacments)
+-> Kreiranje web shop-ova tj. prodavnica
+
+51. Kako mozemo izvrsiti php skriptu u terminalu ?
+
+-> php script.php
+
+52. Predefinisane konstante u php-u ?
+
+-> PHP_VERSION (verzija php-a)
+-> PHP_OS (operativni sistem na kom se izvrsava php)
+-> E_ALL (prikaz svih gresaka)
+-> E_ERROR (prikaz fatal gresaka)
+-> E_WARNING (prikaz upozorenja)
+-> E_NOTICE (prikaz obavestenja)
+-> E_PARSE (greska koja je nastala u toku parsiranja)
+-> E_CORE_ERROR (fatal greska koja je nastala u jezgru)
+-> E_WARNING_ERROR (greska upozorenja koja je nastala u jezgru)
+
+53. Predefinisane magicne konstante u php-u ?
+
+-> __LINE__ 
+
+	-> Ispis broja linije gde se kod nalazi, npr. 
+
+		-> 	<?php
+
+				echo __LINE__; // rezultat je: 3
+
+			?>
+
+-> __FILE__ 
+
+	-> full path (cela putanja) do fajla
+
+-> __DIR__ 
+
+	-> cela putanja do direktorijuma
+
+-> __FUNCTION__ 
+
+	-> naziv funkcije
+
+-> __CLASS__ 
+
+	-> naziv klase
+
+-> __TRAIT__
+
+	-> naziv trait-a
+
+-> __FUNCTION__
+
+	-> naziv funkcije
+
+-> __NAMESPACE__
+
+	-> naziv namespace-a
+
+54. 
