@@ -32,3 +32,7 @@
 32. https://www.w3programmers.com/
 33. https://www.pinterest.com/
 34. https://icons.getbootstrap.com/
+35. https://apexcharts.com/
+36. https://fresh.deno.dev/
+37. https://github.com/PHPMailer/PHPMailer
+38. https://echarts.apache.org/examples/en/index.html
