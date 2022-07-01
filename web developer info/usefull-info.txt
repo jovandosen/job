@@ -36,3 +36,8 @@
 36. https://fresh.deno.dev/
 37. https://github.com/PHPMailer/PHPMailer
 38. https://echarts.apache.org/examples/en/index.html
+39. https://uandisolutions.wordpress.com/2017/01/26/send-email-via-gmail-smtp-server-in-php/
+40. https://www.php.net/manual/en/ref.mail.php
+41. https://pear.php.net/package/Mail_Mime
+42. https://www.w3schools.com/colors/colors_picker.asp
+43. https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
