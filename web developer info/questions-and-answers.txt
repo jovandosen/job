@@ -1137,4 +1137,14 @@ Primeri:
 
 	-> naziv namespace-a
 
-54. 
+54. Kako mozemo da napravimo kopiju/backup baze podataka ?
+
+-> mysqldump -u jovan -p btb > /var/www/btb/backups/db_backup.sql
+	-> komanda koja se pokrece u terminalu, neophodno je uneti sifru od baze
+
+55. Kako mozemo da vratimo kopiju/backup baze podataka ?
+
+-> mysql -u jovan -p foo < /var/www/btb/backups/db_backup.sql
+	-> komanda koja se pokrece u terminalu, neophodno je uneti sifru od baze
+
+56. 
