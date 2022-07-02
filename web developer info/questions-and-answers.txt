@@ -1142,9 +1142,102 @@ Primeri:
 -> mysqldump -u jovan -p btb > /var/www/btb/backups/db_backup.sql
 	-> komanda koja se pokrece u terminalu, neophodno je uneti sifru od baze
 
+-> mysqldump -u jovan -p btb | gzip > /var/www/btb/backups/db_backup.sql.gz
+	-> komanda koja se pokrece u terminalu, neophodno je uneti sifru od baze
+
+-> mysqldump -u jovan -p btb > /var/www/btb/backups/db_backup-$(date +%Y%m%d).sql
+	-> komanda koja se pokrece u terminalu, neophodno je uneti sifru od baze
+
 55. Kako mozemo da vratimo kopiju/backup baze podataka ?
 
 -> mysql -u jovan -p foo < /var/www/btb/backups/db_backup.sql
 	-> komanda koja se pokrece u terminalu, neophodno je uneti sifru od baze
 
-56. 
+56. Koja je uloga break-a i continue-a ?
+
+-> break prekida izvrsavanje for petlje, while petlje ili switch-a
+
+	->  <?php
+			$x = 0;
+
+			while($x < 10) {
+			  if ($x == 4) {
+			    break;
+			  }
+			  echo "The number is: $x <br>";
+			  $x++;
+			}
+		?>
+
+		-> ispis ce biti: 
+
+			The number is: 0
+			The number is: 1
+			The number is: 2
+			The number is: 3
+
+-> continue preskace odredjenu iteraciju u petlji ako je ispunjen neki uslov
+
+	-> 	<?php  
+			for ($x = 0; $x < 10; $x++) {
+			  if ($x == 4) {
+			    continue;
+			  }
+			  echo "The number is: $x <br>";
+			}
+		?>
+
+		-> ispis ce biti:
+
+			The number is: 0
+			The number is: 1
+			The number is: 2
+			The number is: 3
+			The number is: 5
+			The number is: 6
+			The number is: 7
+			The number is: 8
+			The number is: 9
+
+57. Na koji nacin definisemo blok php koda ?
+
+-> <?php [ --- PHP code---- ] ?>
+-> <? [--- PHP code ---] ?> 
+
+58. Kako mozemo da uporedimo dva objekta u php-u ?
+
+-> mozemo da koristimo operator == da proverimo da li su dva objekta instance iste klase i da imaju iste atribute i vrednosti
+-> mozemo da koristimo operator === da proverimo da li su dva  objekta reference na istu instancu neke klase
+
+59. Kako php i javascript mogu da komuniciraju ?
+
+-> php moze da generise javascript kod koji ce se izvrsiti u pretrazivacu
+
+	-> 	<?php
+            echo "<script>alert('test');</script>";
+        ?>
+
+-> javascript moze da prosledi neki parametar u url koji ce se koristiti u php-u
+
+	-> 	<script>
+            var param = 777;
+            window.location.href = "http://btb.project/index.php?foo=" + param;
+        </script>
+
+        -> zatim u php-u mozemo da pokupimo foo parametar
+
+        	-> 	<?php
+        			echo (isset($_GET['foo'])) ? $_GET['foo'] : '';
+        		?>
+
+60. Kako php i html mogu da komuniciraju ?
+
+-> pomocu php-a mozemo da generisemo html kod
+
+	-> 	<?php
+			echo "<h1>aaa<h1/>";
+		?> 
+
+-> pomocu html-a mozemo da kreiramo form-e sa input poljima, cije vrednosti mozemo da pokupimo pomocu php-a
+
+61. 
