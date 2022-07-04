@@ -46,3 +46,7 @@
 46. https://www.unrealengine.com/en-US/
 47. https://linuxize.com/post/how-to-back-up-and-restore-mysql-databases-with-mysqldump/
 48. https://7132.com/en/corporate/press/high-resolution-images
+49. https://linuxize.com/post/how-to-set-up-apache-virtual-hosts-on-ubuntu-20-04/
+50. https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3
+51. https://www.freecodecamp.org/news/write-your-own-browser-extensions/
+52. https://support.google.com/chrome/a/answer/2714278?hl=en
