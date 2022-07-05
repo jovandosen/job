@@ -50,3 +50,5 @@
 50. https://medium.com/@TusharKanjariya/getting-started-with-developing-browser-extensions-eb4a7d8658b3
 51. https://www.freecodecamp.org/news/write-your-own-browser-extensions/
 52. https://support.google.com/chrome/a/answer/2714278?hl=en
+53. https://stackoverflow.com/questions/37061436/mysqli-oop-bind-parameters-error
+54. https://stackoverflow.com/questions/18316501/php-update-prepared-statement
