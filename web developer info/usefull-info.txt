@@ -52,3 +52,8 @@
 52. https://support.google.com/chrome/a/answer/2714278?hl=en
 53. https://stackoverflow.com/questions/37061436/mysqli-oop-bind-parameters-error
 54. https://stackoverflow.com/questions/18316501/php-update-prepared-statement
+55. https://github.com/php/php-src
+56. https://bun.sh/
+57. https://github.com/Jarred-Sumner/bun
+58. https://github.com/features/copilot
+59. https://www.blender.org/
