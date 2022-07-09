@@ -57,3 +57,9 @@
 57. https://github.com/Jarred-Sumner/bun
 58. https://github.com/features/copilot
 59. https://www.blender.org/
+60. https://llvm.org/
+61. https://www.php.net/manual/en/ref.hash.php
+62. https://delim.co/
+63. https://curl.se/dev/testcurl.html
+64. https://github.com/curl/curl
+65. https://zditect.com/blog/2765409.html

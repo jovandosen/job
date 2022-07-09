@@ -1,0 +1,5 @@
+1. List all users
+
+awk -F: '{ print $1}' /etc/passwd
+
+2.
