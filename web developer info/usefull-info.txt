@@ -63,3 +63,6 @@
 63. https://curl.se/dev/testcurl.html
 64. https://github.com/curl/curl
 65. https://zditect.com/blog/2765409.html
+66. https://hhvm.com/
+67. https://github.com/slimphp/Slim-Skeleton
+68. https://thewebtier.com/php/psr4-autoloading-php-files-using-composer/
