@@ -1,0 +1,2 @@
+-> Ako child klasa nema construct, poziva se parent construct
+-> Ako child klasa ima construct i ako zelimo da pozovemo parent construct, neophodno je da pozovemo parent::__construct()
