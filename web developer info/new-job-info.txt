@@ -48,3 +48,11 @@ username: dosenj994
 -> password: protector994
 
 ////////////////////////////////////////
+
+// PIA Media //
+
+url: https://piamedia.softgarden.io/applications?5&l=en
+username: Jovan.Dosen
+password: protector994!
+
+////////////////////////////////////////
