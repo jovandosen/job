@@ -70,3 +70,8 @@
 70. https://help.dreamhost.com/hc/en-us/articles/216363167-Deny-access-to-a-site-with-an-htaccess-file
 71. https://chemicloud.com/kb/article/allow-deny-access-website-using-htaccess/
 72. https://www.geeksforgeeks.org/tar-command-linux-examples/
+73. https://www.programiz.com/c-programming
+74. https://www.programiz.com/c-programming/c-keywords-identifier
+75. https://www.programiz.com/
+76. https://www.geeksforgeeks.org/
+77. https://www.geeksforgeeks.org/c-programming-language/

@@ -1401,4 +1401,10 @@ Primeri:
 
 -> tar cvzf /var/www/btb/file_backups/app.backup.tar.gz /var/www/btb/
 
-71. 
+71. Koje funkcije se koriste za izvrsavanje skripti u terminalu ?
+
+-> exec
+-> shell_exec
+-> system
+
+72. 
