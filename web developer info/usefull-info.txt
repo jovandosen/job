@@ -66,3 +66,4 @@
 66. https://hhvm.com/
 67. https://github.com/slimphp/Slim-Skeleton
 68. https://thewebtier.com/php/psr4-autoloading-php-files-using-composer/
+69. https://www.phptutorial.net/php-oop/php-__call/

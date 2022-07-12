@@ -1240,4 +1240,161 @@ Primeri:
 
 -> pomocu html-a mozemo da kreiramo form-e sa input poljima, cije vrednosti mozemo da pokupimo pomocu php-a
 
-61. 
+61. Sta je foreach ?
+
+-> foreach je vrsta petlje koja se koristi za prolazak kroz niz
+-> primer:
+
+	<?php
+		$colors = array("blue", "white", "black");
+ 
+		foreach ($colors as $value) {
+			echo "$value";
+		}
+	?>
+
+62. Koji tipovi nizova postoje ?
+
+-> indeksirani / numericki
+
+	-> ['foo', 'bar', 'baz']
+
+-> asocijativni 
+
+	-> ['foo' => 'foo_value', 'bar' => 'bar_value', 'baz' => 'baz_value']
+
+-> visedimenzioni 
+
+	-> ['foo' => ['foo', 'bar'], ['baz']]
+
+63. Koja je razlika izmedju dvostrukih i jednostrukih navodnika ?
+
+-> vrednost neke promenljive ce se ispisati unutar dvostrukih navodnika
+-> vrednost neke promenljive nece biti ispisana unutar jednostrukih navodnika, bice tretirana kao obican string
+
+<?php
+	$variable = "name";
+
+	$statement = 'My $variable will not print!n';
+
+	print($statement);
+	
+	$statement = "My $variable will print!n";
+
+	print($statement);
+?>
+
+64. Kako mozemo da spojimo dva stringa ?
+
+-> pomocu tacke .
+-> primer: "well and " . "good";
+
+65. Sta je overloading ?
+
+-> Overloading se koristi za dinamicko kreiranje varijabli i metoda
+-> Tim varijablama i metodama pristupamo pomocu magicnih metoda: __get, __set, __call
+-> __call metoda ce se izvrsiti ako pokusavamo da pozovemo nedostupnu/nepostojecu metodu
+
+-> primer __call metode:
+
+	<?php
+		class MethodTest
+		{
+		    public function __call($name, $arguments)
+		    {
+		        // Note: value of $name is case sensitive.
+		        echo "Calling object method '$name' "
+		             . implode(', ', $arguments). "\n";
+		    }
+
+		    public static function __callStatic($name, $arguments)
+		    {
+		        // Note: value of $name is case sensitive.
+		        echo "Calling static method '$name' "
+		             . implode(', ', $arguments). "\n";
+		    }
+		}
+
+		$obj = new MethodTest;
+
+		$obj->runTest('in object context'); // Calling object method 'runTest' in object context
+
+		MethodTest::runTest('in static context'); // Calling static method 'runTest' in static context
+	?>
+
+66. Kako mozemo da kreiramo novu bazu ?
+
+-> prvo se konektujemo na bazu (new mysqli())
+-> formiramo sql upit (CREATE DATABASE test)
+-> izvrsimo sql upit
+
+67. Sta je callback ?
+
+-> callback funkcija je funkcija koju definisemo, zatim je prosledjujemo kao argument u neku drugu funkciju
+-> primer:
+
+	<?php
+ 
+		function thisFuncTakesACallback($callbackFunc)
+		{
+			echo "I'm going to call $callbackFunc!";
+			$callbackFunc();
+		}
+
+		function thisFuncGetsCalled()
+		{
+			echo "I'm a callback function!";
+		}
+		 
+		thisFuncTakesACallback( 'thisFuncGetsCalled' );
+	?>
+
+68. Sta je closure ?
+
+-> Anonimne (Anonymous) funkcije zvane i closure omogucavaju kreiranje funkcija koje nemaju ime
+
+-> primer 1: 
+
+	<?php
+		$message = 'hello';
+
+		// Inherit $message
+		$example = function () use ($message) {
+		    var_dump($message);
+		};
+
+		$example();
+	?>
+
+-> primer 2: 
+
+	<?php
+		$greet = function($name)
+		{
+		    printf("Hello %s\r\n", $name);
+		};
+
+		$greet('World');
+		$greet('PHP');
+	?>
+
+-> primer 3:
+
+	<?php
+		// Closures can also accept regular arguments
+		$example = function ($arg) use ($message) {
+		    var_dump($arg . ' ' . $message);
+		};
+
+		$example("hello");
+	?>
+
+69. Kako mozemo da generisemo/kriptujemo lozinku ?
+
+-> crypt()
+	-> one way algoritam
+
+-> password_hash()
+	-> password_verify() se koristi za proveru da li je lozinka ispravna
+
+70. 
