@@ -67,3 +67,6 @@
 67. https://github.com/slimphp/Slim-Skeleton
 68. https://thewebtier.com/php/psr4-autoloading-php-files-using-composer/
 69. https://www.phptutorial.net/php-oop/php-__call/
+70. https://help.dreamhost.com/hc/en-us/articles/216363167-Deny-access-to-a-site-with-an-htaccess-file
+71. https://chemicloud.com/kb/article/allow-deny-access-website-using-htaccess/
+72. https://www.geeksforgeeks.org/tar-command-linux-examples/

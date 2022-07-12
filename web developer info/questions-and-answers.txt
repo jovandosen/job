@@ -1397,4 +1397,8 @@ Primeri:
 -> password_hash()
 	-> password_verify() se koristi za proveru da li je lozinka ispravna
 
-70. 
+70. Kako mozemo da napravimo backup svih fajlova pomocu tar komande ?
+
+-> tar cvzf /var/www/btb/file_backups/app.backup.tar.gz /var/www/btb/
+
+71. 
