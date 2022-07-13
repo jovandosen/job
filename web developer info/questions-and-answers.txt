@@ -1407,4 +1407,143 @@ Primeri:
 -> shell_exec
 -> system
 
-72. 
+72. Da li je php strongly typed jezik ?
+
+-> Odgovor je ne
+-> php je weakly ili loosely typed jezik
+-> u php-u ne moramo da definisemo tip varijable (niti mozemo, npr. int $x = 1 nije moguce), za razliku od java-e ili c#
+-> definisanje tipa varijable pre naziva varijable nije moguce u php-u (type casting) 
+-> u php-u varijabla dobija tip nakon dodeljene vrednosti (type juggling)
+-> primer:
+
+	$var = "Hello"; //String
+	$var = 10; //Integer
+
+73. Kako mozemo da pozovemo neku skriptu u terminalu pomocu php-a ?
+
+-> ako imamo skriptu pod nazivom foo.php, u terminalu je mozemo pozvati sa: php foo.php
+
+74. Koja je uloga explode i implode funkcija ?
+
+-> explode fukncija stvara niz od stringa
+-> implode funkcija stvara string od niza
+
+-> primeri:
+
+	$text = "I like programming";
+	print_r (explode(" ",$text));
+
+	$strarr = array('Pen','Pencil','Eraser');
+	echo implode(" ",$strarr);
+
+75. Pomocu koje funkcije mozemo da proverimo tip promenljive ?
+
+-> pomocu funkcije gettype()
+-> primeri:
+
+	echo gettype(true).''; //boolean
+	echo gettype(10).''; //integer
+	echo gettype('Web Programming').''; //string
+	echo gettype(null).''; //NULL
+
+76. Kako mozemo da povecamo maksimalno vreme za izvrsavanje skripte ?
+
+-> mozemo da promenimo max_execution_time direktivu u php.ini fajlu
+-> max_execution_time = 120
+-> po default-u je 30
+
+77. Sta znaci kada prosledjujemo varijablu po vrednosti i po referenci ?
+
+-> primer 1:
+
+	function test($n) 
+	{
+		$n = $n + 10;
+	}
+	 
+	$m = 5;
+	test($m);
+	echo $m; // $m ce imati vrednost 5, nece se promeniti
+
+-> primer 2:
+
+	function test(&$n) 
+	{
+	    $n = $n + 10;
+	}
+
+	$m = 5;
+	test($m);
+	echo $m; // $m i $n dele istu lokaciju u memoriji, pa ce vrednost $m biti 15
+
+78. Koja je razlika izmedju mysqli_connect i mysqli_pconnect ?
+
+-> mysqli_pconnect je kreiranje trajne (persistence) konekcije, sto znaci da se konekcija nece zatvoriti nakon izvresene skripte
+-> mysqli_pconnect funkcija je uklonjena u verziji 7 i nije najbolja praksa
+
+79. Pomocu koje funkcije mozemo da dobijemo ukupan broj redova iz baze dobijenih nakon izvrsenog upita ?
+
+-> pomocu funkcije mysqli_num_rows()
+-> proceduralni primer:
+
+	$mysqli = mysqli_connect("hostname","username","password","DBname");
+	$result = mysqli_query($mysqli,"select * from employees");
+	$count = mysqli_num_rows($result);
+
+80. Kako mozemo da dobijemo listu svih podrzanih tipova slika u instaliranoj verziji php-a ?
+
+-> pomocu funkcije imagetypes()
+-> primer:
+
+	if (imagetypes() & IMG_PNG) {
+    	echo "PNG Support is enabled";
+	}
+
+81. Pomocu koje funkcije mozemo da otvorimo fajl ?
+
+-> pomocu funkcije fopen()
+-> primeri: 
+
+	$file1 = fopen("myfile1.txt","r"); //Open for reading
+	$file2 = fopen("myfile2.txt","w"); //Open for writing
+	$file3 = fopen("myfile3.txt","r+"); //Open for reading and writing
+
+82. Pomocu koje funkcije mozemo da obrisemo fajl ?
+
+-> pomocu funkcije unlink
+-> primer:
+
+	unlink('path/to/file')
+
+83. Koja je uloga strip_tags() funkcije ?
+
+-> pomocu strip_tags funkcije mozemo da uklonimo sve tagove (HTML, XML, PHP) iz nekog stringa
+-> takodje mozemo da prosledimo i parametar sa tagovima koje zelimo da ostavimo u stringu
+-> primeri:
+
+	//Remove all tags from the text
+	echo strip_tags("<b>PHP</b> is a popular <em>scripting</em> language");
+	//Remove all tags excluding <b> tag
+	echo strip_tags("<b>PHP</b> is a popular <em>scripting</em> language","<b>");
+
+84. Kako mozemo da posaljemo HTTP header klijentu ?
+
+-> pomocu funkcije header()
+-> salje se raw HTTP header
+-> mora da se pozove pre bilo kakvog ispisa (html output)
+-> primer:
+
+	header('Location: http://www.your_domain/');
+
+85. Kako mozemo da dobijemo/izracunamo ukupan broj elemenata niza ?
+
+-> pomocu funkcije count() ili sizeof()
+-> primeri:
+
+	$names=array('Asa','Prinka','Abhijeet');
+	echo count($names);
+
+	$marks=array(95,70,87);
+	echo sizeof($marks);
+
+86. 
