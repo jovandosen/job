@@ -1546,4 +1546,371 @@ Primeri:
 	$marks=array(95,70,87);
 	echo sizeof($marks);
 
-86. 
+86. Koja je razlika izmedju substr i strstr ?
+
+-> substr vraca deo stringa (teksta) iz nekog drugod stringa
+-> prosledjuemo offset (od kog mesta da krene) parametar i duzinu stringa
+-> primer:
+
+	echo substr("Computer Programming",9,7); //Returns “Program”
+	echo substr("Computer Programming",9); //Returns “Programming”
+
+	$rest = substr("abcdef", -1);    // returns "f"
+	$rest = substr("abcdef", -2);    // returns "ef"
+	$rest = substr("abcdef", -3, 1); // returns "d"
+
+-> strstr vraca prvo pojavljivanje (occurrence) stringa u nekom stringu
+-> primer 1: 
+
+	echo strstr("Learning Laravel 5!","Laravel"); //Returns Laravel 5!
+
+-> takodje mozemo da prosledimo i treci parametar u funkciju ako zelimo da dobijemo string koji se nalazi pre prvog pojavljivanja stringa
+-> primer 2:
+
+	echo strstr("Learning Laravel 5!","Laravel",true); //Returns Learning
+
+87. Kako mozemo da upload-ujemo fajlu u php-u ?
+
+-> Koraci:
+
+	-> ukljuciti file_uploads direktivu u php.ini fajlu
+		-> file_uploads = On
+
+	-> kreirati html formu (mora biti post metoda i mora da ima enctype atribut sa vrednoscu multipart/form-data)
+
+		-> 	<form action="upload.php" method="post" enctype="multipart/form-data">
+				<input type="file" name="upd" id="upd">
+				<input type="submit" value="Upload" name="upload">
+			</form>
+
+	-> podaci upload-ovanog fajla se nalaze u $_FILES superglobalnom nizu
+
+88. Pomocu koje funkcije mozemo da proverimo da li se neka vrednost nalazi u nizu ?
+
+-> pomocu funkcije in_array()
+-> primer:
+
+	$languages = array("C#", "Java", "PHP", "VB.Net");
+
+	if (in_array("PHP", $languages)) {
+		echo "PHP is in the list";
+	} else {
+		echo "php is not in the list";
+	}
+
+89. Sta je $_REQUEST ?
+
+-> sadrzi podatke submit-ovane forme
+-> Ako imamo neku formu cija je metoda GET, podacima mozemo da pristupimo pomocu $_GET ili $_REQUEST
+-> Ako imamo neku formu cija je metoda POST, podacima mozemo da pristupimo pomocu $_POST ili $_REQUEST
+
+90. Koja je razlika izmedju for i foreach petlje ?
+
+-> obe petlje se koriste za prolazak kroz niz podataka
+-> for petlja se ne moze koristiti ako imamo asocijativni niz
+-> foreach petlja se moze koristiti ako imamo asocijativni niz
+-> primeri:
+
+	// Loop will iterate for 5 times
+	for ($n = 0; $n <= 5; $n++) {
+		echo "The number is: $n <br>";
+	}
+
+	// Declaring an array
+	$arr = array();
+	$arr["Java"] = "Spring Boot";
+	$arr["PHP"] = "CodeIgniter";
+	$arr["Python"] = "Django";
+	  
+	// Looping over array
+	foreach($arr as $key => $val) {
+	  
+	    // Accessing individual elements
+	    echo($key . " : " . $val . "<br>");
+	}
+
+91. Koliko dugo traje sesija ?
+
+-> po default-u traje 24 minute (1440 sekundi)
+-> ako zelimo da promenimo duzinu trajanja sesije, u php.ini fajlu mozemo da promenimo vrednost gc_maxlifetime direktive
+	-> gc_maxlifetime = 1800 (30 minuta)
+
+92. Da li php podrzava nasledjivanje vise klasa u isto vreme ?
+
+-> odgovor je ne
+-> php moze da implementira vise interfejsa
+-> primer:
+
+	interface A 
+	{
+		public function foo();
+	} 
+
+	interface B 
+	{
+		public function bar();
+	} 
+
+	class C implements A, B
+	{
+		public function foo()
+		{
+			// write code
+		}
+
+		public function bar()
+		{
+			// write code
+		}
+	}
+
+93. Koja je uloga mysqli_real_escape_string funkcije ?
+
+-> uklanja/izbegava specijalne karaktere
+-> koristi se kod izvrsavanja sql upita
+-> primer:
+
+	<?php
+	// Connect
+	$link = mysql_connect('mysql_host', 'mysql_user', 'mysql_password')
+	    OR die(mysql_error());
+
+	// Query
+	$query = sprintf("SELECT * FROM users WHERE user='%s' AND password='%s'",
+	            mysql_real_escape_string($user),
+	            mysql_real_escape_string($password));
+	?>
+
+-> mysql_connect je van upotrebe i ranjiv
+-> mysqli_real_escape_string funkcija je takodje van upotrebe
+-> mysqli_real_escape_string je uklonjena u verziji 7 (zbog ranjivosti)
+
+94. Koje funkcije se koriste za uklanjanje praznih mesta (whitespace) ?
+
+-> trim() funckija uklanja prazna mesta sa leve i desne strane
+-> ltrim() funkcija uklanja prazna mesta sa leve strane
+-> rtrim() funkcija uklanja prazna mesta sa desne strane 
+
+-> primer:
+
+	$str = " Tutorials for your help";
+	$val1 = trim($str);
+	$val2 = ltrim($str);
+	$val3 = rtrim($str);
+
+95. Sta je persistence cookie ?
+
+-> kao i svaki drugi cookie, samo sto persistence cookie traje dosta duze
+-> koristi se za pracenje aktivnost korisnika 
+-> nije siguran, moze da se ukloni u pretrazivacu
+-> primer: 
+
+	setccookie ("cookie_name", "cookie_value", strtotime("+2 years");
+
+96. Sta je XSS (cross-site scripting) napad i kako moze da se spreci ?
+
+-> XSS je vrsta hakerskog napada
+-> ako imamo formu koja prihvata podatke od korisnika ($_GET, $_POST, $_FILE), haker moze da posalje malver tj. skriptu (javascript)
+-> primeri: 
+
+	https://example.com/profile/?u=john // umesto imena moze da se prosledi javascript
+	https://example.com/profile/?u=alert("Your website is compromised!")
+
+	https://example.com/profile/?u=john // umesto imena moze da se redirektuje na sajt gde se nalazi malver
+	https://example.com/profile/?u=window.location=”https://maliciouswebsite.com”
+
+	-> ako korisnik upload-uje sliku, umesto slike moze da se upload-uje malver (javascript)
+	-> moze da se spreci proverom tipa fajla
+
+-> XSS napada moze da se spreci upotrebom funkcije htmlspecialchars() ili htmlentities()
+-> obe funkcije pretvaraju/konvertuju specijalne karaktere u HTML entitete
+	 
+	‘&‘ (ampersand) becomes ‘&amp;‘
+	‘"‘ (double quote) becomes ‘&quot;‘
+	‘<‘ (less than) becomes ‘&lt;‘
+	‘>‘ (greater than) becomes ‘&gt;‘
+	“'” (single quote) becomes ‘&#039;‘ (or &apos;)
+
+-> primer:
+
+	<?php
+		$new = htmlspecialchars("<a href='test'>Test</a>", ENT_QUOTES);
+		echo $new; // &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
+	?>
+
+97. Kako mozemo da pristupimo upload-ovanom fajlu ?
+
+-> pomocu niza $_FILES
+-> $_FILES sadrzi sve informacije o upload-ovanom fajlu
+
+    $_FILES[$fieldName][‘name’] – Keeps the original file name.
+    $_FILES[$fieldName][‘type’] – Keeps the file type of an uploaded file.
+    $_FILES[$fieldName][‘size’] – Stores the file size in bytes.
+    $_FILES[$fieldName][‘tmp_name’] – Keeps the temporary file name which is used to store the file in the server.
+    $_FILES[$fieldName][‘error’] – Contains error code related to the error that appears during the upload.
+
+    -> $fieldName je vrednost atributa name od input type file taga
+    -> npr. <input type='file' name='avatar'>
+
+98. Sta znace kljucne reci static i final ?
+
+-> funkcije i varijable koje su static, pozivamo bez objekta tj. instance klase
+-> varijablama koje su static, pristupamo pomocu kljucne reci self (ne koristi se this)
+-> primeri:
+
+	class Foo 
+	{
+		public static $test = 'well and good';
+
+    	public static function aStaticMethod() 
+    	{
+        	return self::$test;
+    	}
+	}
+
+	print Foo::aStaticMethod(); // ispis: well and good 
+
+	Foo::$test = 'eeeeeee';
+	
+	print Foo::aStaticMethod(); // ispis: eeeeeee
+
+-> klase koje imaju kljucnu rec final ne mogu da se nasledjuju
+-> metode i varijable koje imaju kljucnu rec final ne mogu da se override-uju tj. pregaze
+
+99. Kako mozemo da dobijemo informacije o nekoj slici ?
+
+-> getimagesize() – dobijamo velicinu slike
+-> exif_imagetype() – dobijamo tip slike
+-> imagesx() – dobijamo sirinu slike
+-> imagesy() – dobijamo visinu slike
+
+100. Koja je razlika izmedju apstraktne klase i interfejsa ?
+
+-> PHP klasa moze da implementira vise interfejsa, ali ne moze da nasledi vise apstraktnih klasa
+-> apstraktne klase i interfejsi se ne mogu instancirati
+-> ako neka klasa nasledjuje apstraktnu klasu, ona NE MORA da override-uje sve metode iz apstraktne klase
+-> ako neka klasa implementira neki interfejs, ona MORA da override-uje sve metode iz interfejsa
+
+-> primeri:
+
+	primer 1:
+
+		abstract class B 
+		{
+			public function test(){}
+			public function dev(){}
+		}
+
+		class A extends B
+		{
+			//
+		}
+
+		$x = new B(); // Fatal error: Uncaught Error: Cannot instantiate abstract class B
+
+	primer 2:
+
+		abstract class B 
+		{
+			public function test(){} // mora da ima telo tj. {}
+			public function dev(){}
+		}
+
+		class A extends B
+		{
+			public function test()
+			{
+				return 'gggg';
+			}
+			
+			public function foo()
+			{
+				$y = $this->test();
+				echo 'aaa' . $y;
+			}
+		}
+
+		$x = new A();
+
+		$x->foo();
+
+	primer 3: 
+
+		interface B 
+		{
+			public function test(){} // Fatal error: Interface function B::test() cannot contain body
+			public function dev(){}
+		}
+
+		class A implements B
+		{
+			public function test()
+			{
+				return 'gggg';
+			}
+			
+			public function foo()
+			{
+				$y = $this->test();
+				echo 'aaa' . $y;
+			}
+		}
+
+		$x = new A();
+
+		$x->foo();
+
+	primer 4:
+
+		interface B 
+		{
+			public function test();
+			public function dev();
+		}
+
+		class A implements B
+		{
+			public function test()
+			{
+				return 'gggg';
+			}
+			
+			public function dev()
+			{
+				return 'bbb';	
+			}
+			
+			public function foo()
+			{
+				$y = $this->test();
+				$z = $this->dev();
+				echo 'aaa' . $y . $z;
+			}
+		}
+
+		$x = new A();
+
+		$x->foo();
+
+	primer 5:
+
+		interface B 
+		{
+			public function test();
+			public function dev();
+		}
+
+		$x = new B(); // Fatal error: Uncaught Error: Cannot instantiate interface B
+
+101. Sta je skupljanje otpada (garbage collection) u php-u ?
+
+-> php automatski vrsi skupljanje otpada
+-> php direktive koje koriste skupljanje otpada:
+
+    session.gc_maxlifetime (default value, 1440)
+    session.gc_probability (default value, 1)
+    session.gc_divisor (default value, 100)
+
+-> /tmp direktorijum se koristi za privremeno skladistenje
+
+102. 
