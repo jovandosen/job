@@ -77,3 +77,4 @@
 77. https://www.geeksforgeeks.org/c-programming-language/
 78. https://www.digitalocean.com/
 79. http://xdebug.org/
+80. https://www.phpforkids.com/php/php-gd-library-function-reference.php
