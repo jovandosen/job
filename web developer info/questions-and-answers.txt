@@ -1913,4 +1913,47 @@ Primeri:
 
 -> /tmp direktorijum se koristi za privremeno skladistenje
 
-102. 
+102. Koja biblioteka se koristi za rad sa slikama ?
+
+-> GD library se koristi za rad sa slikama
+-> neke od opcija su: rotiranje slika, isecanje, kreiranje thumbnail-a
+
+103. Sta je URL rewriting ?
+
+-> php framework-ci koriste koriste URL rewriting kako bi svi zahtevi isli na index.php koji se obicno nalazi u public direktorijumu
+-> takodje se dodaje i .htaccess fajl:
+
+	-> 	RewriteEngine On
+		RewriteRule ^inc/.*$ index.php
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.*)$ index.php [QSA,L]
+
+-> npr. ako imamo link: 
+
+	-> www.yourwidgetstore.com/products.php?productID=50
+	-> pomocu URL rewriting-a istom linku bi mogli da priustupimo:
+		-> www.yourwidgetstore.com/red-widgets.html
+
+104. Sta je PDO ?
+
+-> PDO je akronim od PHP Data Objects
+-> PDO je lightweight PHP extension
+-> omogucava konektovanje na bazu, izvrsavanje upita
+-> primer:
+
+	<?php
+		$servername = "localhost";
+		$username = "username";
+		$password = "password";
+
+		try {
+		  $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+		  // set the PDO error mode to exception
+		  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		  echo "Connected successfully";
+		} catch(PDOException $e) {
+		  echo "Connection failed: " . $e->getMessage();
+		}
+	?>
+
+105. 
