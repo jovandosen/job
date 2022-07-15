@@ -488,6 +488,7 @@ Primeri:
 25. Sta je Memcache i Memcached ?
 
 -> Kesiranje upita ka bazi
+-> Kesiranje objekata u memoriji
 -> Brze ucitavanje stranica, kod web sajtova koji imaju mnogo poseta (Drupal, Wordpress)
 -> Smanjuje broj upita ka bazi
 -> memory caching system
@@ -2075,4 +2076,22 @@ Primeri:
 -> pomocu fpdf biblioteke
 -> neophodan je gd library support (zbog slika) i zlib (zbog kompresije)
 
-115. 
+115. Sta je .htaccess ?
+
+-> .htaccess fajlovi su konfiguracioni fajlovi apache servera koji omogucavaju konfiguracione izmene po direktorijumu (per-directory)
+-> primeri:
+	
+	-> mozemo da dodamo URL rewriting
+	-> mozemo da definisemo listu IP adresa kojima je zabranjeno da posete sajt
+	-> custom error strane, 404 strane
+	-> prinuditi da sajt koristi HTTPS umesto HTTP
+	-> redirekcija ka nekoj URL adresi
+	-> zastitita odredjenih direktorijuma sa lozinkom
+
+116. Nabroj nekoliko template engine-a ?
+
+	-> Twig
+	-> Blade
+	-> Smarty
+
+117. 
