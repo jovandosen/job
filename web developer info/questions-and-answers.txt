@@ -231,15 +231,25 @@
 	-> functions, class constructors, class methods, keywords and constructs (if, else, null, foreach, echo etc.)
 
 8. Koji tipovi podataka (varijabli) postoje ?
+	-> takodje podeljeni i po grupama 
 
--> Integer
--> String
--> Boolean
--> Object (npr. $mango = new Fruit())
--> Array
--> Resource (npr. konekcija na bazu)
--> Null
--> Double
+-> Grupa: Scalar Data Types
+
+	-> Integer
+	-> String
+	-> Boolean
+	-> Double
+	-> Float
+
+-> Grupa: Compound Data Types
+
+	-> Object (npr. $mango = new Fruit())
+	-> Array
+
+-> Grupa: Special Data Types
+
+	-> Resource (npr. konekcija na bazu, curl, ftp, gd library, socket)
+	-> Null
 
 9. Koja su pravila prilikom deklarisanja varijable ?
 
@@ -452,6 +462,7 @@ Primeri:
 
 -> Final klasa se ne moze naslediti od strane druge klase
 -> Final metoda se ne moze pregaziti (override)
+-> Property ne moze da ima kljucnu rec final tj. ne moze da bude definisan kao final
 
 24. Kako mozemo kreirati novu bazu ?
 
@@ -1411,7 +1422,7 @@ Primeri:
 
 -> Odgovor je ne
 -> php je weakly ili loosely typed jezik
--> u php-u ne moramo da definisemo tip varijable (niti mozemo, npr. int $x = 1 nije moguce), za razliku od java-e ili c#
+-> u php-u ne moramo da definisemo tip varijable, za razliku od java-e ili c#
 -> definisanje tipa varijable pre naziva varijable nije moguce u php-u (type casting) 
 -> u php-u varijabla dobija tip nakon dodeljene vrednosti (type juggling)
 -> primer:
@@ -1956,4 +1967,112 @@ Primeri:
 		}
 	?>
 
-105. 
+105. Koja je razlika izmedju require() i require_once() ?
+
+-> require() funkcija ce svaki put ucitati fajl kada je pozvana
+-> require() se koristi kada zelimo da ucitamo neki fajl sa malo funkcija
+
+-> require_once() funkcija proverava da li je fajl ucitan, ako nije jednom ga ucita (u memoriju), i svaki sledeci put ignorise poziv
+-> require_once() funkcija se koristi kada zelimo da ucitamo neki fajl sa dosta funkcija
+
+106. Kako mozemo da odlozimo izvrsavanje neke skripte ?
+
+-> pomocu funkcije sleep()
+-> ova funkcija prihvata broj sekundi kao parametar
+-> primer: 
+
+	// current time
+	echo date('h:i:s') . "\n";
+
+	// sleep for 10 seconds
+	sleep(10);
+
+	// wake up !
+	echo date('h:i:s') . "\n";
+
+107. Sta je CMS i nabroj nekoliko ?
+
+-> CMS je akronim od Content Management System
+-> Neki od popularnih CMS-ova su:
+
+	-> WordPress
+	-> Drupal
+	-> Joomla
+	-> Magento
+
+108. Kako mozemo da dodamo komentar u php-u ?
+
+-> komentar u jednoj liniji se dodaje pomocu // ili #
+	-> primer: // ovo je komentar
+	-> primer: # ovo je komentar
+
+-> komentar u vise linija se dodaje pomocu /**/
+	-> primer: /* ovo je
+					komentar */
+
+109. Da li typecasting podrzan u php-u ?
+
+-> Odgovor je da 
+-> primeri:
+	
+    (int), (integer): Cast to integer
+    (bool), (boolean): Cast to boolean
+    (float), (double), (real): Cast to float
+    (string): Cast to string
+    (array): Cast to array
+    (object): Cast to object
+
+110. Da li mozemo da submit-ujemo formu bez submit input polja ?
+
+-> Mozemo da submit-ujemo formu bez submit input polja, pomocu javascripta (submit() funkcija)
+
+111. Da li php podrzava variable length argument functions ?
+
+-> Odgovor je da, pomocu ... tokena
+-> primer:
+
+	<?php
+		function add(...$num) 
+		{
+			$sum = 0;
+			foreach ($num as $n) {
+				$sum += $n;
+			}
+			return $sum;
+		}
+		echo add(5, 6, 7, 8); // 26
+	?>
+
+112. Kako funkcionise array_filter() funkcija ?
+
+-> primer:
+
+	$input = array(2, 5, 10);
+
+	$output = array_filter($input, function ($x) { return $x > 2; });
+
+	var_dump($output);
+
+-> rezultat:
+
+	array(2) {
+  		[1]=>
+  			int(5)
+  		[2]=>
+  			int(10)
+	}
+
+	-> dobili smo novi niz, ciji elementi su sacuvali indeksnu poziciju iz originalnog niza
+
+113. Sta je Zend Engine ?
+
+-> Zend Engine je kompajler php koda
+-> Obezbedjuje memory i resource management 
+-> Pretvara php kod u Zend OPCodes, zatim se ti kodovi pretvaraju u html koji se salje pretrazivacu
+
+114. Pomocu koje biblioteke mozemo da pravimo pdf fajlove ?
+
+-> pomocu fpdf biblioteke
+-> neophodan je gd library support (zbog slika) i zlib (zbog kompresije)
+
+115. 
