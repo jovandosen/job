@@ -79,3 +79,4 @@
 79. http://xdebug.org/
 80. https://www.phpforkids.com/php/php-gd-library-function-reference.php
 81. http://www.fpdf.org/
+82. https://www.1001freefonts.com/
