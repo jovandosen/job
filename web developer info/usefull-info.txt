@@ -84,3 +84,9 @@
 84. https://linuxize.com/post/umask-command-in-linux/
 85. https://linuxize.com/post/chmod-command-in-linux/
 86. https://linuxize.com/post/linux-chown-command/
+87. https://codesource.io/
+88. https://codesource.io/brief-overview-of-design-pattern-used-in-laravel/#:~:text=The%20Builder%20pattern%20is%20one,good%20for%20creating%20complex%20products.
+89. https://laracasts.com/discuss/channels/laravel/what-design-patterns-used-for-laravel-framework
+90. https://refactoring.guru/design-patterns/php
+91. https://phptherightway.com/pages/Design-Patterns.html
+92. https://cs.lmu.edu/~ray/notes/designpatterns/

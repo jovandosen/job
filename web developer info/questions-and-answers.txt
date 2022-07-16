@@ -2094,4 +2094,20 @@ Primeri:
 	-> Blade
 	-> Smarty
 
-117. 
+117. Nabroj nekoliko design pattern-a ?
+
+	-> Builder pattern
+	-> Factory pattern
+	-> Strategy pattern
+	-> Provider pattern
+	-> Repository pattern
+	-> Facade pattern
+	-> Singleton pattern
+	-> Front Controller pattern
+	-> Model View Controller pattern
+	-> Prototype pattern
+	-> Bridge pattern
+	-> Adapter pattern
+	-> Mediator pattern
+
+118. 
