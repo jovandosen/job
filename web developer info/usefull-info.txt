@@ -80,3 +80,7 @@
 80. https://www.phpforkids.com/php/php-gd-library-function-reference.php
 81. http://www.fpdf.org/
 82. https://www.1001freefonts.com/
+83. https://linuxize.com/post/how-to-create-directories-in-linux-with-the-mkdir-command/
+84. https://linuxize.com/post/umask-command-in-linux/
+85. https://linuxize.com/post/chmod-command-in-linux/
+86. https://linuxize.com/post/linux-chown-command/
