@@ -89,3 +89,52 @@ chown -R www-data: /var/www
 
 sudo chown user:group filename
 //////////////////////////////////////////////////////////////////////////////////
+21. Recursively set read, write, and execute permissions to the file owner 
+	and no permissions for all other users on a given directory
+
+sudo chmod -R 700 dirname
+//////////////////////////////////////////////////////////////////////////////////
+22. For example, to change the permissions of all files and subdirectories 
+	under the /var/www directory to 755 you would use:
+
+sudo chmod -R 755 /var/www
+//////////////////////////////////////////////////////////////////////////////////
+23. The most common scenario is to recursively change the website 
+	file’s permissions to 644 and directory’s permissions to 755
+
+	-> Using the numeric method:
+
+		find /var/www/my_website -type d -exec chmod 755 {} \;
+		find /var/www/my_website -type f -exec chmod 644 {} \;
+
+	-> Using the symbolic method:
+
+		find /var/www/my_website -type d -exec chmod u=rwx,go=rx {} \;
+		find /var/www/my_website -type f -exec chmod u=rw,go=r {} \;
+
+//////////////////////////////////////////////////////////////////////////////////
+24. Display last N lines in some file
+
+tail -n 3 foo.txt 
+//////////////////////////////////////////////////////////////////////////////////
+25. Display first N lines in some file
+
+head -n 3 foo.txt
+//////////////////////////////////////////////////////////////////////////////////
+26. Check how much space some file takes
+
+du -h foo.txt
+//////////////////////////////////////////////////////////////////////////////////
+27. Read content of some file
+
+cat foo.txt
+//////////////////////////////////////////////////////////////////////////////////
+28. Using the history command without options displays the list 
+	of commands used since the start of the terminal session:
+
+history
+//////////////////////////////////////////////////////////////////////////////////
+29. Change user password
+
+passwd
+//////////////////////////////////////////////////////////////////////////////////
