@@ -2110,7 +2110,7 @@ Primeri:
 	-> Adapter pattern
 	-> Mediator pattern
 
-118. Objasni Builder pattern ?
+118. Objasni Builder (creational) pattern ?
 
 -> Builder pattern je stvaralacki patern, koji omogucava kreiranje razlicitih objekata po istom stvaralackom procesu (korak po korak)
 -> Builder pattern je veoma koristan kada zelimo da kreiramo objekat sa mnogo razlicitih konfiguracionih opcija
@@ -2253,7 +2253,7 @@ Primeri:
 
 		?>
 
-119. Objasni Factory pattern ?
+119. Objasni Factory (creational) pattern ?
 
 -> Factory patern je stvaralacki patern, koji omogucava kreiranje objekata razlicitih klasa putem metoda
 -> primer:
@@ -2304,4 +2304,78 @@ Primeri:
 		$factory = new Factory;
 		$obj = $factory->build(); // $obj u sebi ima sve potrebne objekte (A, B, C)
 
-120. 
+120. Objasni Strategy (behavioral) pattern ?
+
+-> Uvek se koristi interface
+-> Definisu se klase koje su slicne ali nisu povezane, ove klase implementiraju interfejs
+-> Zatim se definise nova klasa (Context) koja koristi objekte definisnih klasa
+-> primer:
+
+	<?php
+
+	interface StrategyInterface {
+	    /**
+	     * Do something.
+	     */
+	    public function handle();
+	}
+
+	class Context {
+	    /**
+	     * @var StrategyContract
+	     */
+	    private $strategy;
+	   
+
+	    /**
+	     * Context constructor.
+	     * 
+	     * @param StrategyContract $strategy
+	     * @throws Exception
+	     */
+	    public function __construct(StrategyInterface $strategy)
+	    {
+	        if (isset($this->strategy)) {
+	            throw new Exception("Contract is already present.");
+	        }
+	        $this->strategy = $strategy;
+	    }
+
+	    /**
+	     * Call strategy handle() method.
+	     */
+	    public function handle()
+	    {
+	        $this->strategy->handle();
+	    }
+	}
+
+	class FirstConcreteStrategy implements StrategyInterface {
+	    
+	    /**
+	     * {@inheritdoc}
+	     */
+	    public function handle()
+	    {
+	        echo PHP_EOL . 'DOING SOMETHING' . PHP_EOL;
+	    }
+	}
+
+	class SecondConcreteStrategy implements StrategyInterface {
+	    
+	    /**
+	     * {@inheritdoc}
+	     */
+	    public function handle() {
+	        echo PHP_EOL . 'DOING SOMETHING SLIGHT DIFFERENTLY' . PHP_EOL;
+	    }
+	}
+
+	//
+	$context = new Context(new FirstConcreteStrategy());
+	$context->handle();
+
+	$second_context = new Context(new SecondConcreteStrategy());
+	$second_context->handle();
+
+121. 
