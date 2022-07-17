@@ -2110,4 +2110,147 @@ Primeri:
 	-> Adapter pattern
 	-> Mediator pattern
 
-118. 
+118. Objasni Builder pattern ?
+
+-> Builder pattern je stvaralacki patern, koji omogucava kreiranje razlicitih objekata po istom stvaralackom procesu (korak po korak)
+-> Builder pattern je veoma koristan kada zelimo da kreiramo objekat sa mnogo razlicitih konfiguracionih opcija
+-> Npr. ako imamo neku klasu koja ima jednu metodu za kreiranje objekta i nekoliko metoda za modifikaciju krajnjeg objekta
+	
+	-> someBuilder->setValueA(1)->setValueB(2)->create()
+
+-> Jedan od primera Builder paterna je SQL query builder
+
+	-> 	interface SQLQueryBuilder
+		{
+		    public function select(string $table, array $fields): SQLQueryBuilder;
+
+		    public function where(string $field, string $value, string $operator = '='): SQLQueryBuilder;
+
+		    public function limit(int $start, int $offset): SQLQueryBuilder;
+
+		    // +100 other SQL syntax methods...
+
+		    public function getSQL(): string;
+		}
+
+		class MysqlQueryBuilder implements SQLQueryBuilder
+		{
+		    protected $query;
+
+		    protected function reset(): void
+		    {
+		        $this->query = new \stdClass();
+		    }
+
+		    /**
+		     * Build a base SELECT query.
+		     */
+		    public function select(string $table, array $fields): SQLQueryBuilder
+		    {
+		        $this->reset();
+		        $this->query->base = "SELECT " . implode(", ", $fields) . " FROM " . $table;
+		        $this->query->type = 'select';
+
+		        return $this;
+		    }
+
+		    /**
+		     * Add a WHERE condition.
+		     */
+		    public function where(string $field, string $value, string $operator = '='): SQLQueryBuilder
+		    {
+		        if (!in_array($this->query->type, ['select', 'update', 'delete'])) {
+		            throw new \Exception("WHERE can only be added to SELECT, UPDATE OR DELETE");
+		        }
+		        $this->query->where[] = "$field $operator '$value'";
+
+		        return $this;
+		    }
+
+		    /**
+		     * Add a LIMIT constraint.
+		     */
+		    public function limit(int $start, int $offset): SQLQueryBuilder
+		    {
+		        if (!in_array($this->query->type, ['select'])) {
+		            throw new \Exception("LIMIT can only be added to SELECT");
+		        }
+		        $this->query->limit = " LIMIT " . $start . ", " . $offset;
+
+		        return $this;
+		    }
+
+		    /**
+		     * Get the final query string.
+		     */
+		    public function getSQL(): string
+		    {
+		        $query = $this->query;
+		        $sql = $query->base;
+		        if (!empty($query->where)) {
+		            $sql .= " WHERE " . implode(' AND ', $query->where);
+		        }
+		        if (isset($query->limit)) {
+		            $sql .= $query->limit;
+		        }
+		        $sql .= ";";
+		        return $sql;
+		    }
+		}
+
+		function clientCode(SQLQueryBuilder $queryBuilder)
+		{
+		    // ...
+
+		    $query = $queryBuilder
+		        ->select("users", ["name", "email", "password"])
+		        ->where("age", 18, ">")
+		        ->where("age", 30, "<")
+		        ->limit(10, 20)
+		        ->getSQL();
+
+		    echo $query;
+
+		    // ...
+		}
+
+		echo "Testing MySQL query builder:\n";
+		clientCode(new MysqlQueryBuilder());
+
+-> Jos jedan jednostavan primer:
+
+	-> 	<?php
+
+			interface DeviceBuilder
+			{
+				public function name();
+			}
+
+			class Device implements DeviceBuilder
+			{
+				private $device;
+				
+				public function __construct($device)
+				{
+					$this->device = $device;
+				}
+				
+				public function name()
+				{
+					return $this->device;
+				}
+			}
+
+			function makeDevice(DeviceBuilder $builder)
+			{
+				echo $builder->name();
+				
+			}
+
+			makeDevice(new Device('phone'));
+			makeDevice(new Device('tablet'));
+			makeDevice(new Device('laptop'));
+
+		?>
+
+119. 

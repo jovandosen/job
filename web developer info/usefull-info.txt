@@ -90,3 +90,5 @@
 90. https://refactoring.guru/design-patterns/php
 91. https://phptherightway.com/pages/Design-Patterns.html
 92. https://cs.lmu.edu/~ray/notes/designpatterns/
+93. https://refactoring.guru/design-patterns/builder/php/example#example-0
+94. https://webmobtuts.com/backend-development/demonstrating-builder-design-pattern-in-php/
