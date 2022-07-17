@@ -2253,4 +2253,55 @@ Primeri:
 
 		?>
 
-119. 
+119. Objasni Factory pattern ?
+
+-> Factory patern je stvaralacki patern, koji omogucava kreiranje objekata razlicitih klasa putem metoda
+-> primer:
+
+	class A
+	{
+	    public $classb;
+	    public $classc;
+
+	    public function __construct($classb, $classc)
+	    {
+	         $this->classb = $classb;
+	         $this->classc = $classc;
+	    }
+  	}
+
+  	$obj = new ClassA(new ClassB, new Class C);
+
+  	-> 	Da bi izbegli konstantno kreiranje novog objekta i prosledjivanje drugih objekata kao parametre, mozemo da kreiramo fabriku koja ce 
+  		sve to da uradi za nas
+
+  		class Factory
+  		{
+		    public function build()
+		    {
+		        $classc = $this->buildC();
+		        $classb = $this->buildB();
+		        return $this->buildA($classb, $classc);
+
+		    }
+
+		    public function buildA($classb, $classc)
+		    {
+		        return new ClassA($classb, $classc);
+		    }
+
+		    public function buildB()
+		    {
+		        return new ClassB;
+		    }
+
+		    public function buildC()
+		    {
+		        return new ClassC;
+		    }
+		}
+
+		$factory = new Factory;
+		$obj = $factory->build(); // $obj u sebi ima sve potrebne objekte (A, B, C)
+
+120. 
