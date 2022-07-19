@@ -2561,4 +2561,50 @@ Primeri:
 
 	?>
 
-125. 
+125. Objasni Model View Controller pattern ?
+
+-> Model View Controller pattern je patern koji se koristi za podelu aplikacije na nekoliko slojeva
+
+-> Model
+
+	-> Model se koristi za logiku aplikacije (business logic)
+	-> Logika obuhvata rad sa bazom i sve CRUD operacije (CREATE, READ, UPDATE, DELETE), rad sa eksternim bibliotekama
+
+-> Controller
+
+	-> Controller sluzi kao posrednik izmedju Model-a i View-a
+	-> Controller preuzima zahtev od korisnika, taj zahtev prosledjuje u Model kako bi se formirali (business logic) neophodni podaci, 
+		Model vraca podatke Controller-u
+	-> U Controller-u moze da postoji logika, ako je potrebno da doradimo ili izmenimo podatke koje je vratio Model
+	-> Na kraju Controller prosledjuje podatke u View
+
+-> View
+
+	-> View je prezentacijski sloj, gde se podaci prikazuju korisiku u vidu HTML, XML, JSON-a
+	-> View se sastoji iz HTML, CSS i JS
+
+	-> PHP framework-ci koriste razne template engine:
+
+		-> Laravel koristi Blade
+		-> Slim koristi Twig
+		-> Smarty
+
+	-> Template engine-i koriste OOP pristup, gde se kreira glavni template fajl kojeg drugi fajlovi nasledjuju
+
+		-> main.blade.php
+
+			-> register extends main
+			-> login extends main
+
+		-> main.twig
+
+			-> register extends main
+			-> login extends main
+
+	-> Takodje template engine-i mogu da imaju i manje delove (partials) od kojih se grade strane
+
+			include header.blade.php
+			include footer.blade.php
+			include scripts.blade.php
+
+126. 

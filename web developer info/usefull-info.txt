@@ -98,3 +98,4 @@
 98. http://bsa-git.github.io/silex-mvc/
 99. https://github.com/silexphp/Silex
 100. https://stackoverflow.com/questions/6890200/what-is-a-front-controller-and-how-is-it-implemented
+101. https://programmingdive.com/understanding-mvc-design-pattern-in-php/
