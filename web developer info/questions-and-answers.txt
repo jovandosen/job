@@ -2607,4 +2607,44 @@ Primeri:
 			include footer.blade.php
 			include scripts.blade.php
 
-126. 
+126. Objasni Prototype pattern ? 
+
+-> Prototype pattern je patern koji koristimo kada zelimo da pravimo klonove tj. identicne kopije originalnog objekta
+-> Da bi mogli da koristimo kljucnu rec clone, originalna klasa moze, a i ne mora da koristi magicnu metodu __clone()
+-> Ako dodamo metodu __clone(), kod koji se nalazi unutar funkcije ce se izvristi kod clone objekta
+-> Prednost kloniranje je to sto ne moramo ponovo da pozivamo konstruktor klase, vec samo pravimo kopiju objekta koji postoji u memoriji
+-> primer:
+
+	<?php
+
+		class Book
+		{
+			private $name;
+			
+			public function __construct($name)
+			{
+				$this->name = $name;
+			}
+			
+			public function getName()
+			{
+				return $this->name;
+			}
+			
+			public function __clone()
+			{
+				echo 'This will run too';
+			}
+		}
+
+		$book1 = new Book('Test');
+
+		echo $book1->getName();
+
+		$book2 = clone $book1;
+
+		echo $book2->getName();
+
+	?>
+
+127. 
