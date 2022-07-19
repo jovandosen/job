@@ -2509,10 +2509,10 @@ Primeri:
 		public static function getLoggerInstance()
 		{
 			if(self::$logger == null){
-				$self::logger = new Logger();
+				self::logger = new Logger();
 			}
 
-			return $self::logger;
+			return self::logger;
 		}
 
 		public function log()
@@ -2530,4 +2530,35 @@ Primeri:
 	$logger3 = Logger::getLoggerInstance();
 	$logger3->log();
 
-124. 
+124. Objasni Front Controller pattern ?
+
+-> Front Controller pattern je patern gde se svi HTTP zahtevi usperavaju na jednu lokaciju (npr. index.php, front-controller.php)
+-> Aplikacije cesto imaju public direktorijum u kom se nalazi index.php ili front-controller.php koji sluze kao jedna lokacija za sve HTTP zahteve
+-> u public direktorijumu se nalazi i .htaccess fajl koji omogucava prosledjivanje svih HTTP zahteva na jednu lokaciju
+-> primeri .htaccess fajla:
+
+	-> 	RewriteEngine On
+		RewriteRule . /front-controller.php [L]
+
+	->  RewriteEngine On
+		RewriteRule . /index.php [L]
+
+-> zatim bi u index.php ili front-controller.php fajlu imali slican kod:
+
+	<?php
+
+		switch ($_SERVER['REQUEST_URI']) {
+		    case '/help':
+		        include 'help.php';
+		        break;
+		    case '/calendar':
+		        include 'calendar.php';
+		        break;
+		    default:
+		        include 'notfound.php';
+		        break;
+		}
+
+	?>
+
+125. 
