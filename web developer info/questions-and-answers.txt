@@ -2421,6 +2421,45 @@ Primeri:
 		-> 	u ovom primeru nismo ograniceni na Eloquent, Repository ce nam obezbediti potrebne podatke, 
 			aplikacija ce nastaviti da radi i necemo morati da prepisujemo kod
 
-122. Objasni Facade pattern ?
+122. Objasni Facade (structural) pattern ?
 
--> 
+-> Facade patern je strukturalni patern koji obezbedjuje interfejs, kojeg implementiraju klase i biblioteke
+-> U Laravel framework-u fasade obezbedjuju staticni (static) interfejs kojeg implementiraju klase registrovane u service container-u
+-> primeri:
+	
+	-> 	use Illuminate\Support\Facades\Cache;
+
+		-> Cache::get('key');
+
+	->	use Illuminate\Support\Facades\Route;
+
+		->  Route::get('/cache', function () {
+   	 			return Cache::get('key');
+			});
+
+	->	use Illuminate\Support\Facades\Response
+
+		-> 	Route::get('/users', function () {
+			    return Response::json([
+			        // ...
+			    ]);
+			});
+			 
+			Route::get('/users', function () {
+			    return response()->json([
+			        // ...
+			    ]);
+			});
+
+			-> u ovom primeru koristimo i helper funkciju response()
+
+	->	use Illuminate\Support\Facades\Request
+	->	use Illuminate\Support\Facades\View
+
+		->  return View::make('profile');
+ 
+			return view('profile');
+
+			-> u ovom primeru koristimo i helper funkciju view()
+
+123. 
