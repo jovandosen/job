@@ -2462,4 +2462,72 @@ Primeri:
 
 			-> u ovom primeru koristimo i helper funkciju view()
 
-123. 
+123. Objasni Singleton pattern ?
+
+-> Singleton pattern je patern gde kreiramo samo jedan objekat neke klase koji cemo koristiti u aplikaciji
+->primer 1:
+
+	// General singleton class.
+	class Singleton 
+	{
+	  	// Hold the class instance.
+
+	  	private static $instance = null;
+	  
+	  	// The constructor is private
+	  	// to prevent initiation with outer code.
+
+	  	private function __construct()
+	  	{
+	    	// The expensive process (e.g.,db connection) goes here.
+	  	}
+	 
+	  	// The object is created from within the class itself
+	  	// only if the class has no instance.
+
+	  	public static function getInstance()
+	  	{
+	    	if (self::$instance == null){
+	      		self::$instance = new Singleton();
+	    	}
+	 
+	    	return self::$instance;
+	  	}
+	}
+
+	// All the variables point to the same object.
+	$object1 = Singleton::getInstance();
+	$object2 = Singleton::getInstance();
+	$object3 = Singleton::getInstance();
+
+-> primer 2:
+
+	class Logger
+	{
+		private static $logger = null;
+
+		public static function getLoggerInstance()
+		{
+			if(self::$logger == null){
+				$self::logger = new Logger();
+			}
+
+			return $self::logger;
+		}
+
+		public function log()
+		{
+			//
+		}
+	}
+
+	$logger1 = Logger::getLoggerInstance();
+	$logger1->log();
+
+	$logger2 = Logger::getLoggerInstance();
+	$logger2->log();
+
+	$logger3 = Logger::getLoggerInstance();
+	$logger3->log();
+
+124. 
