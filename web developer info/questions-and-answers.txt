@@ -2099,7 +2099,6 @@ Primeri:
 	-> Builder pattern
 	-> Factory pattern
 	-> Strategy pattern
-	-> Provider pattern
 	-> Repository pattern
 	-> Facade pattern
 	-> Singleton pattern
@@ -2111,6 +2110,8 @@ Primeri:
 	-> Mediator pattern
 
 118. Objasni Builder (creational) pattern ?
+
+-> Laravel query builder ( select()->where()->where()->get() )
 
 -> Builder pattern je stvaralacki patern, koji omogucava kreiranje razlicitih objekata po istom stvaralackom procesu (korak po korak)
 -> Builder pattern je veoma koristan kada zelimo da kreiramo objekat sa mnogo razlicitih konfiguracionih opcija
@@ -2378,4 +2379,48 @@ Primeri:
 	$second_context = new Context(new SecondConcreteStrategy());
 	$second_context->handle();
 
-121. 
+121. Objasni Repository pattern ?
+
+-> Repository predstavlja sloj u arhitekturi aplikacije, koji omogucava/obavlja komunikaciju izmedju aplikacije i izvora podataka (data source)
+-> Aplikaciji nije bitno na koji nacin ce se podaci kreirati od strane data source-a, sve dok podaci stizu u istom obliku
+-> primer:
+
+	-> 	class UsersController extends Controller
+		{
+		   public function index()
+		   {
+		       $users = User::all();
+
+		       return view('users.index', [
+		           'users' => $users
+		       ]);
+		   }
+		} 
+
+		-> u ovom primeru smo ograniceni na Eloquent za dobijanje svih koristika, i sta ako klijent odluci da koristi drugi tip baze podatka 
+
+	-> 	class UsersController extends Controller
+		{
+		   private $userRepository;
+		  
+		   public function __construct(UserRepositoryInterface $userRepository)
+		   {
+		       $this->userRepository = $userRepository;
+		   }
+
+		   public function index()
+		   {
+		       $users = $this->userRepository->all();
+
+		       return view('users.index', [
+		           'users' => $users
+		       ]);
+		   }
+		}
+
+		-> 	u ovom primeru nismo ograniceni na Eloquent, Repository ce nam obezbediti potrebne podatke, 
+			aplikacija ce nastaviti da radi i necemo morati da prepisujemo kod
+
+122. Objasni Facade pattern ?
+
+-> 

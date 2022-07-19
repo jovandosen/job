@@ -94,3 +94,6 @@
 94. https://webmobtuts.com/backend-development/demonstrating-builder-design-pattern-in-php/
 95. https://medium.com/mestredev/strategy-in-php-8-design-patterns-2044e5ef54ed
 96. https://dev.to/osaigbovoemmanuel1/strategy-design-pattern-simple-example-implementation-in-php-41ae
+97. https://medium.com/@ivorobioff/the-5-most-common-design-patterns-in-php-applications-7f33b6b7d8d6
+98. http://bsa-git.github.io/silex-mvc/
+99. https://github.com/silexphp/Silex
