@@ -74,4 +74,73 @@
 	  	Queue ....................................................................................................................................... sync  
 	  	Session ..................................................................................................................................... file
 
-12. 
+12. php artisan route:list
+
+	-> prikazuje sve definisane rute
+
+		 GET|HEAD   / ............................................................... 
+		 POST       _ignition/execute-solution ignition.executeSolution › Spatie\Lar…
+		 GET|HEAD   _ignition/health-check ignition.healthCheck › Spatie\LaravelIgni…
+		 POST       _ignition/update-config ignition.updateConfig › Spatie\LaravelIg…
+		 GET|HEAD   api/user ........................................................ 
+		 GET|HEAD   confirm-password password.confirm › Auth\ConfirmablePasswordCont…
+		 POST       confirm-password ....... Auth\ConfirmablePasswordController@store
+		 GET|HEAD   dashboard ............................................. dashboard
+		 POST       email/verification-notification verification.send › Auth\EmailVe…
+		 GET|HEAD   forgot-password password.request › Auth\PasswordResetLinkControl…
+		 POST       forgot-password password.email › Auth\PasswordResetLinkControlle…
+		 GET|HEAD   login ........ login › Auth\AuthenticatedSessionController@create
+		 POST       login ................. Auth\AuthenticatedSessionController@store
+		 POST       logout ..... logout › Auth\AuthenticatedSessionController@destroy
+		 GET|HEAD   register ........ register › Auth\RegisteredUserController@create
+		 POST       register .................... Auth\RegisteredUserController@store
+		 POST       reset-password password.update › Auth\NewPasswordController@store
+		 GET|HEAD   reset-password/{token} password.reset › Auth\NewPasswordControll…
+		 GET|HEAD   sanctum/csrf-cookie . Laravel\Sanctum › CsrfCookieController@show
+		 GET|HEAD   verify-email verification.notice › Auth\EmailVerificationPromptC…
+		 GET|HEAD   verify-email/{id}/{hash} verification.verify › Auth\VerifyEmailC…
+
+13. php artisan make:request StorePostRequest
+
+	-> kreiranje klase za validaciju Post-ova
+
+		public function rules()
+		{
+		    return [
+		        'title' => 'required|unique:posts|max:255',
+		        'body' => 'required',
+		    ];
+		}
+
+14. php artisan make:middleware EnsureTokenIsValid
+
+	-> kreiranje middleware-a
+
+		<?php
+ 
+			namespace App\Http\Middleware;
+			 
+			use Closure;
+			 
+			class EnsureTokenIsValid
+			{
+			    /**
+			     * Handle an incoming request.
+			     *
+			     * @param  \Illuminate\Http\Request  $request
+			     * @param  \Closure  $next
+			     * @return mixed
+			     */
+			    public function handle($request, Closure $next)
+			    {
+			        if ($request->input('token') !== 'my-secret-token') {
+			            return redirect('home');
+			        }
+			 
+			        return $next($request);
+			    }
+			}
+
+		?>
+
+15. 

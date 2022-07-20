@@ -102,4 +102,95 @@
 			-> paypal
 			-> stripe
 
-13. 
+13. database direktorijum
+
+	-> sastoji se iz migracija
+	-> Factories (kreiranje dummy podataka)
+	-> db seeds (kreiranje dummy podataka)
+
+14. public direktorijum
+
+	-> ulazna putanja u aplikaciju (sluzi kao front controller)
+	-> sastoji se iz:
+
+		-> index.php fajla koji je front controller
+		-> .htaccess fajla u kom su definisane direktive (svi HTTP zahtevi da se redirektuju na index.php)
+		-> robots.txt (za indeksiranje)
+
+15. lang direktorijum
+
+	-> ukoliko je aplikacija visejezicna
+	-> tekst, validacione poruke i sl.
+
+16. resources direktorijum
+
+	-> svi blade template fajlovi se nalaze u ovom direktorijumu
+	-> partials (header. footer, sidebar)
+	-> main.blade.php
+
+17. routes direktorijum 
+
+	-> u ovom direktorijumu se nalaze sve rute (GET, POST, PATCH, DELETE) aplikacije
+
+18. storage direktorijum
+
+	-> sastoji se iz log fajlova, upload-ovanih fajlova i sl.
+
+19. tests direktorijum 
+
+	-> svi testovi se nalaze u ovom direktorijumu, npr. PHPUnit tests
+
+20. vendor direktorijum
+
+	-> sve php biblioteke koje smo instalirali putem composer-a se nalaze u ovom direktorijumu
+
+21. Breeze
+
+	-> fast auth system (register, login, password change, mail confirmation)
+	-> podrzava Vue i React
+
+22. Rutiranje
+
+	-> vrste ruta:
+
+		Route::get($uri, $callback);
+		Route::post($uri, $callback);
+		Route::put($uri, $callback);
+		Route::patch($uri, $callback);
+		Route::delete($uri, $callback);
+		Route::options($uri, $callback);
+
+	-> dodeljivanje imena rutama:
+
+		Route::get('/user/profile', function () {
+    		//
+		})->name('profile');
+
+	-> pozivanje middleware-a na grupu ruta:
+
+		Route::middleware(['first', 'second'])->group(function () {
+		    Route::get('/', function () {
+		        // Uses first & second middleware...
+		    });
+		 
+		    Route::get('/user/profile', function () {
+		        // Uses first & second middleware...
+		    });
+		});
+
+	-> prosledjivanje parametara u rute:
+	
+		Route::get('/user/{id}', function ($id) {
+    		return 'User '.$id;
+		});
+
+23. Validacija formi
+
+	->primer:
+
+		$validated = $request->validate([
+        	'title' => 'required|unique:posts|max:255',
+        	'body' => 'required',
+    	]);	
+
+24. 
