@@ -2,6 +2,8 @@
 
 2. Umesto webpack se koristi vite
 
+	-> vite se koristi za kompajliranje CSS i JS koda
+
 3. Instalacija novog projekta putem composer-a
 
 	-> composer create-project laravel/laravel quick-overview-app
@@ -32,4 +34,72 @@
 	-> package.json je glavni konfiguracioni fajl
 	-> npm install ce kreirati direktorijum (node_modules) sa svim bibliotekama koda
 
-8. 
+8. homebrew (brew)
+
+	-> slican composer-u
+	-> sluzi za instaliranje biblioteka koda
+	-> mac ili lunux (radno okruzenje)
+
+9. Struktura direktorijuma (najvazniji direktorijumi)
+
+	-> app
+	-> bootstrap
+	-> config
+	-> database
+	-> public
+	-> lang
+	-> resources
+	-> routes
+	-> storage
+	-> tests
+	-> vendor
+
+10. app direktorijum
+
+	-> sastoji se iz: 
+
+		-> Controllers
+		-> Models
+		-> Middleware
+		-> Providers
+		-> Custom created artisan commands
+
+11. bootstrap direktorijum
+
+	-> sastoji se iz app.php fajla, koji prakricno pokrece celu laravel aplikaciju
+
+12. config direktorijum
+
+	-> sastoji se iz konfiguracionih fajlova
+
+		-> app.php (APP_NAME, APP_ENV, APP_DEBUG, timezone)
+
+		-> database.php 
+
+			-> drajveri:
+
+				-> mysql
+				-> sqlite
+				-> pqsql
+				-> sqlsrv
+
+		-> filesystems.php (gde se smestaju upload-ovani fajlovi, kreirani fajlovi i sl.) 
+
+			-> local storage path
+			-> s3
+
+		->  mail.php (drajveri)
+
+			-> smtp
+			-> mailgun
+			-> postmark
+
+		-> services.php (osetljivi podaci -> secret id i secret key)
+
+			-> gmail
+			-> github
+			-> bitbucket
+			-> paypal
+			-> stripe
+
+13. 
