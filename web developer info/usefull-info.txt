@@ -99,3 +99,5 @@
 99. https://github.com/silexphp/Silex
 100. https://stackoverflow.com/questions/6890200/what-is-a-front-controller-and-how-is-it-implemented
 101. https://programmingdive.com/understanding-mvc-design-pattern-in-php/
+102. https://www.cloudbooklet.com/how-to-install-or-upgrade-php-8-1-on-ubuntu-20-04/
+103. https://opensenselabs.com/blog/tech/change-php-version-drupal-website-apache-nginx

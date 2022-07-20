@@ -1,0 +1,30 @@
+1. php artisan serve
+
+	-> dobijamo lokalno radno okruzenje na adresi: http://localhost:8000
+
+2. php artisan list
+
+	-> prikazuje listu svih artisan komandi
+
+3. php artisan key:generate
+
+	-> generise kljuc aplikacije (application key)
+	-> neophodan kako bi aplikacija normalno funkcionisala
+	-> neophodan zbog sesija (sessions)
+	-> primer: APP_KEY=base64:SiKhFJHwj1AtGUViay5H7KuP5mBBqTMiYGt2JM3RW6g=
+
+4. php artisan migrate 
+
+	-> izvrsava migracije
+	-> migracije koristimo za rapidno generisanje struktura tablela u bazi
+
+5. php artisan migrate:status
+
+	-> provera trenutnog stanja migracija (da li se neke migracije nisu izvrsile)
+
+6. php artisan db:seed
+
+	-> popunjavanje tabela sa dummy podacima
+	-> faker biblioteka se koristi za kreiranje dummy podataka
+
+7.  

@@ -1,0 +1,35 @@
+1. Laravel 9.x zahteva minimum verziju PHP 8.0
+
+2. Umesto webpack se koristi vite
+
+3. Instalacija novog projekta putem composer-a
+
+	-> composer create-project laravel/laravel quick-overview-app
+
+4. .env 
+
+	-> .env je glavni konfiguracioni fajl
+	-> u njemu definisemo parametre za bazu, za slanje email-ova (smtp data), secret id i secret key od drustvenih mreza 
+		(ako zelimo druge login opcije putem: gmail, linkedin, github, bitbucket)
+
+5. @csrf
+
+	-> cross site request forgery
+	-> kreiranje zastitnog tokena u slucaju hakerskog napada
+	-> kreirani token se smesta u sesiju i u formu u vidu hidden input polja
+
+6. composer
+
+	-> alata za instaliranje iskljucivo php biblioteka koda
+	-> composer.json je glavni konfiguracioni fajl
+	-> composer.lock je fajl sa meta podacima (podaci o instaliranim bibliotekama)
+
+7. npm
+
+	-> Node Package Manager
+	-> sluzi za instaliranje biblioteka koda (css i js)
+	-> neophodan je Node.js (open source server environment)
+	-> package.json je glavni konfiguracioni fajl
+	-> npm install ce kreirati direktorijum (node_modules) sa svim bibliotekama koda
+
+8. 
