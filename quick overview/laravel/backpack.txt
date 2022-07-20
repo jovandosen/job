@@ -1,0 +1,41 @@
+-> koristi se za izgradnju admin panela
+
+-> sastoji se iz:
+
+	-> HTML
+	-> CSS
+	-> JS
+	-> PHP
+	-> BOOTSTRAP
+	-> LARAVEL (Eloquent modeli, sve CRUD operacije)
+
+-> podrzava:
+
+	-> Vue
+	-> React
+	-> Sass
+	-> Less
+	-> Webpack
+	-> Npm
+
+-> php artisan backpack:crud tag
+
+	-> komanda koja kreira sve potrebne delove (Contoller, Model, Request, Route) za CRUD operacije nekog Eloquent modela
+
+-> php artisan backpack:build
+
+	-> komanda koja kreira CRUDs za sve Eloquent modele
+
+-> download putem composer-a:
+
+	-> composer require backpack/crud
+
+-> instalacija putem artisan-a:
+
+	-> php artisan backpack:install
+
+-> Admin UI sadrzi:
+
+	-> Widgets
+	-> Breadcrumbs
+	-> Alerts

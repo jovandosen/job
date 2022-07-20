@@ -1,0 +1,3 @@
+-> Kubernetes je open-source sistem za razvoj, monitoring i kontrolu aplikacija koje su definisane/kreirane u container-ima
+-> slican je Docker-u
+-> omogucena je nadogradnja, bez izmene core-a

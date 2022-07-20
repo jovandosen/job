@@ -101,3 +101,5 @@
 101. https://programmingdive.com/understanding-mvc-design-pattern-in-php/
 102. https://www.cloudbooklet.com/how-to-install-or-upgrade-php-8-1-on-ubuntu-20-04/
 103. https://opensenselabs.com/blog/tech/change-php-version-drupal-website-apache-nginx
+104. https://backpackforlaravel.com/
+105. https://kubernetes.io/
