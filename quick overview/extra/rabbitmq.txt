@@ -1,0 +1,22 @@
+-> RabbitMQ je messaging system
+
+-> moze se koristiti putem HTTP API-ja, command line tool, UI
+
+-> kompatibilan je sa Docker, Kubernetes
+
+-> programski jezici: PHP, JAVASCRIPT, JAVA, .NET, RUBY, GO
+
+-> kako funkcionise:
+
+	producer -> exchange -> queue -> consumer
+
+	producer koristi routing key
+	exchange koristi binding key
+
+-> tipovi exchange-a su:
+
+	-> fanout
+	-> topic
+	-> header
+	-> direct
+	-> default
