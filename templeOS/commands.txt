@@ -1,0 +1,13 @@
+1. exit temple os window
+
+	-> right ctrl
+
+2. help screen
+
+	-> F1
+
+3. display god word to screen
+
+	-> F7
+
+4. 
