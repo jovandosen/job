@@ -105,3 +105,7 @@
 105. https://kubernetes.io/
 106. https://www.rabbitmq.com/
 107. https://templeos.org/
+108. https://app.vagrantup.com/boxes/search
+109. https://www.vagrantup.com/
+110. https://www.vagrantup.com/docs/vagrantfile
+111. https://www.youtube.com/watch?v=t3pfmZ6WaMY&ab_channel=PascalBaljet
